@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Binder IPC Demo</string>
+    <string name="title_hint">Android Binder IPC (AIDL) Demo</string>
+    <string name="input_hint">Input your name</string>
+    <string name="button_bind">Bind Remote Service</string>
+    <string name="button_unbind">Unbind Service</string>
+    <string name="button_call">Call Remote Methods</string>
+    <string name="default_result">Result will be shown here</string>
+</resources>
