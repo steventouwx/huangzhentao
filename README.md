@@ -16,10 +16,14 @@ app/src/main/aidl/com/example/binderipc/IRemoteCalculator.aidl
 app/src/main/java/com/example/binderipc/CalculatorCore.java
 app/src/main/java/com/example/binderipc/RemoteCalculatorService.java
 app/src/main/java/com/example/binderipc/MainActivity.java
+app/src/main/java/com/example/binderipc/systemservice/ServiceManagerCompat.java
+app/src/main/java/com/example/binderipc/systemservice/SystemServiceManagerExample.java
 app/src/main/res/layout/activity_main.xml
 app/src/main/AndroidManifest.xml
 selftest/test_binder_demo.py
 selftest/java/com/example/binderipc/CalculatorCoreSelfTest.java
+selftest/java/com/example/binderipc/ServiceManagerMiniSelfTest.java
+selftest/java/com/example/binderipc/systemservice/SystemServiceManagerStyleSelfTest.java
 ```
 
 ---
@@ -42,6 +46,15 @@ selftest/java/com/example/binderipc/CalculatorCoreSelfTest.java
 4. **边界处理**
    - 名字为空/null 时回退为 `Guest`
    - `add` 做整型溢出校验，溢出时抛 `ArithmeticException`
+
+5. **系统 ServiceManager 示例（进阶）**
+   - 示例文件：
+     - `app/src/main/java/com/example/binderipc/systemservice/ServiceManagerCompat.java`
+     - `app/src/main/java/com/example/binderipc/systemservice/SystemServiceManagerExample.java`
+   - 该示例演示如何通过反射调用隐藏类 `android.os.ServiceManager`：
+     - `addService(name, binder)` 注册系统 Binder 服务
+     - `getService(name)` 获取系统 Binder 服务并 `transact`
+   - 注意：该能力通常要求 **system/privileged** 身份；普通三方应用请优先使用 `bindService + AIDL`
 
 ---
 
@@ -70,4 +83,6 @@ python3 -m unittest discover -s selftest -p "test_*.py"
 - AIDL 接口合同检查
 - Activity 绑定与调用关键路径检查
 - `javac/java` 编译并执行 `CalculatorCoreSelfTest`（功能 + 边界）
+- `javac/java` 编译并执行 `ServiceManagerMiniSelfTest`（本地/远端代理链路）
+- `javac/java` 编译并执行 `SystemServiceManagerStyleSelfTest`（ServiceManager 风格注册/获取/调用）
 

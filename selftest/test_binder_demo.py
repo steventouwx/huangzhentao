@@ -10,8 +10,11 @@ MANIFEST_PATH = ROOT / "app/src/main/AndroidManifest.xml"
 AIDL_PATH = ROOT / "app/src/main/aidl/com/example/binderipc/IRemoteCalculator.aidl"
 MAIN_ACTIVITY_PATH = ROOT / "app/src/main/java/com/example/binderipc/MainActivity.java"
 CALCULATOR_CORE_PATH = ROOT / "app/src/main/java/com/example/binderipc/CalculatorCore.java"
+SERVICE_MANAGER_COMPAT_PATH = ROOT / "app/src/main/java/com/example/binderipc/systemservice/ServiceManagerCompat.java"
+SYSTEM_SM_EXAMPLE_PATH = ROOT / "app/src/main/java/com/example/binderipc/systemservice/SystemServiceManagerExample.java"
 JAVA_SELFTEST_PATH = ROOT / "selftest/java/com/example/binderipc/CalculatorCoreSelfTest.java"
 JAVA_SM_SELFTEST_PATH = ROOT / "selftest/java/com/example/binderipc/ServiceManagerMiniSelfTest.java"
+JAVA_SYSTEM_SM_STYLE_SELFTEST_PATH = ROOT / "selftest/java/com/example/binderipc/systemservice/SystemServiceManagerStyleSelfTest.java"
 JAVA_MINI_BINDER_DIR = ROOT / "selftest/java/com/example/binderipc/minibinder"
 JAVA_MINI_AIDL_DIR = ROOT / "selftest/java/com/example/binderipc/miniaidl"
 JAVA_MINI_SM_DIR = ROOT / "selftest/java/com/example/binderipc/miniservicemanager"
@@ -60,6 +63,32 @@ class BinderDemoSelfTest(unittest.TestCase):
         for snippet in required_snippets:
             self.assertIn(snippet, content, f"MainActivity missing key snippet: {snippet}")
 
+    def test_system_service_manager_example_contract(self):
+        self.assertTrue(SERVICE_MANAGER_COMPAT_PATH.exists(), f"ServiceManagerCompat not found: {SERVICE_MANAGER_COMPAT_PATH}")
+        self.assertTrue(SYSTEM_SM_EXAMPLE_PATH.exists(), f"SystemServiceManagerExample not found: {SYSTEM_SM_EXAMPLE_PATH}")
+
+        compat_content = SERVICE_MANAGER_COMPAT_PATH.read_text(encoding="utf-8")
+        example_content = SYSTEM_SM_EXAMPLE_PATH.read_text(encoding="utf-8")
+
+        compat_required = [
+            'Class.forName("android.os.ServiceManager")',
+            'getDeclaredMethod("addService", String.class, IBinder.class)',
+            'getDeclaredMethod("getService", String.class)',
+            "public static void addService(String serviceName, IBinder serviceBinder)",
+            "public static IBinder getService(String serviceName)",
+        ]
+        for snippet in compat_required:
+            self.assertIn(snippet, compat_content, f"ServiceManagerCompat missing key snippet: {snippet}")
+
+        example_required = [
+            "ServiceManagerCompat.addService(SERVICE_NAME, new EchoBinderService())",
+            "ServiceManagerCompat.getService(SERVICE_NAME)",
+            "remote.transact(TRANSACTION_ECHO, data, reply, 0)",
+            'public static final String SERVICE_NAME = "demo.system_echo"',
+        ]
+        for snippet in example_required:
+            self.assertIn(snippet, example_content, f"SystemServiceManagerExample missing key snippet: {snippet}")
+
     def test_java_core_logic_runner(self):
         javac_cmd = shutil.which("javac")
         java_cmd = shutil.which("java")
@@ -69,6 +98,10 @@ class BinderDemoSelfTest(unittest.TestCase):
         self.assertTrue(CALCULATOR_CORE_PATH.exists(), f"CalculatorCore not found: {CALCULATOR_CORE_PATH}")
         self.assertTrue(JAVA_SELFTEST_PATH.exists(), f"Java self-test class not found: {JAVA_SELFTEST_PATH}")
         self.assertTrue(JAVA_SM_SELFTEST_PATH.exists(), f"Java ServiceManager self-test class not found: {JAVA_SM_SELFTEST_PATH}")
+        self.assertTrue(
+            JAVA_SYSTEM_SM_STYLE_SELFTEST_PATH.exists(),
+            f"Java SystemServiceManager style self-test class not found: {JAVA_SYSTEM_SM_STYLE_SELFTEST_PATH}",
+        )
         self.assertTrue(JAVA_MINI_BINDER_DIR.exists(), f"MiniBinder dir not found: {JAVA_MINI_BINDER_DIR}")
         self.assertTrue(JAVA_MINI_AIDL_DIR.exists(), f"MiniAIDL dir not found: {JAVA_MINI_AIDL_DIR}")
         self.assertTrue(JAVA_MINI_SM_DIR.exists(), f"MiniServiceManager dir not found: {JAVA_MINI_SM_DIR}")
@@ -93,6 +126,7 @@ class BinderDemoSelfTest(unittest.TestCase):
                 str(CALCULATOR_CORE_PATH),
                 str(JAVA_SELFTEST_PATH),
                 str(JAVA_SM_SELFTEST_PATH),
+                str(JAVA_SYSTEM_SM_STYLE_SELFTEST_PATH),
                 *[str(p) for p in mini_sources],
             ],
             check=False,
@@ -140,6 +174,26 @@ class BinderDemoSelfTest(unittest.TestCase):
             f"Java ServiceManager self-test failed.\nstdout:\n{run_proc_sm.stdout}\nstderr:\n{run_proc_sm.stderr}",
         )
         self.assertIn("ALL_TESTS_PASSED", run_proc_sm.stdout)
+
+        run_proc_system_sm_style = subprocess.run(
+            [
+                java_cmd,
+                "-cp",
+                str(classes_dir),
+                "com.example.binderipc.systemservice.SystemServiceManagerStyleSelfTest",
+            ],
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(
+            0,
+            run_proc_system_sm_style.returncode,
+            "Java SystemServiceManager style self-test failed.\n"
+            f"stdout:\n{run_proc_system_sm_style.stdout}\n"
+            f"stderr:\n{run_proc_system_sm_style.stderr}",
+        )
+        self.assertIn("ALL_TESTS_PASSED", run_proc_system_sm_style.stdout)
 
 
 if __name__ == "__main__":
