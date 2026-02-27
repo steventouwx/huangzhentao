@@ -11,6 +11,10 @@ AIDL_PATH = ROOT / "app/src/main/aidl/com/example/binderipc/IRemoteCalculator.ai
 MAIN_ACTIVITY_PATH = ROOT / "app/src/main/java/com/example/binderipc/MainActivity.java"
 CALCULATOR_CORE_PATH = ROOT / "app/src/main/java/com/example/binderipc/CalculatorCore.java"
 JAVA_SELFTEST_PATH = ROOT / "selftest/java/com/example/binderipc/CalculatorCoreSelfTest.java"
+JAVA_SM_SELFTEST_PATH = ROOT / "selftest/java/com/example/binderipc/ServiceManagerMiniSelfTest.java"
+JAVA_MINI_BINDER_DIR = ROOT / "selftest/java/com/example/binderipc/minibinder"
+JAVA_MINI_AIDL_DIR = ROOT / "selftest/java/com/example/binderipc/miniaidl"
+JAVA_MINI_SM_DIR = ROOT / "selftest/java/com/example/binderipc/miniservicemanager"
 ANDROID_NS = "{http://schemas.android.com/apk/res/android}"
 
 
@@ -64,11 +68,22 @@ class BinderDemoSelfTest(unittest.TestCase):
 
         self.assertTrue(CALCULATOR_CORE_PATH.exists(), f"CalculatorCore not found: {CALCULATOR_CORE_PATH}")
         self.assertTrue(JAVA_SELFTEST_PATH.exists(), f"Java self-test class not found: {JAVA_SELFTEST_PATH}")
+        self.assertTrue(JAVA_SM_SELFTEST_PATH.exists(), f"Java ServiceManager self-test class not found: {JAVA_SM_SELFTEST_PATH}")
+        self.assertTrue(JAVA_MINI_BINDER_DIR.exists(), f"MiniBinder dir not found: {JAVA_MINI_BINDER_DIR}")
+        self.assertTrue(JAVA_MINI_AIDL_DIR.exists(), f"MiniAIDL dir not found: {JAVA_MINI_AIDL_DIR}")
+        self.assertTrue(JAVA_MINI_SM_DIR.exists(), f"MiniServiceManager dir not found: {JAVA_MINI_SM_DIR}")
 
         classes_dir = ROOT / "build/selftest-classes"
         if classes_dir.exists():
             shutil.rmtree(classes_dir)
         classes_dir.mkdir(parents=True, exist_ok=True)
+
+        mini_sources = (
+            list(JAVA_MINI_BINDER_DIR.rglob("*.java"))
+            + list(JAVA_MINI_AIDL_DIR.rglob("*.java"))
+            + list(JAVA_MINI_SM_DIR.rglob("*.java"))
+        )
+        self.assertTrue(mini_sources, "Mini binder sources not found")
 
         compile_proc = subprocess.run(
             [
@@ -77,6 +92,8 @@ class BinderDemoSelfTest(unittest.TestCase):
                 str(classes_dir),
                 str(CALCULATOR_CORE_PATH),
                 str(JAVA_SELFTEST_PATH),
+                str(JAVA_SM_SELFTEST_PATH),
+                *[str(p) for p in mini_sources],
             ],
             check=False,
             capture_output=True,
@@ -105,6 +122,24 @@ class BinderDemoSelfTest(unittest.TestCase):
             f"Java self-test failed.\nstdout:\n{run_proc.stdout}\nstderr:\n{run_proc.stderr}",
         )
         self.assertIn("ALL_TESTS_PASSED", run_proc.stdout)
+
+        run_proc_sm = subprocess.run(
+            [
+                java_cmd,
+                "-cp",
+                str(classes_dir),
+                "com.example.binderipc.ServiceManagerMiniSelfTest",
+            ],
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(
+            0,
+            run_proc_sm.returncode,
+            f"Java ServiceManager self-test failed.\nstdout:\n{run_proc_sm.stdout}\nstderr:\n{run_proc_sm.stderr}",
+        )
+        self.assertIn("ALL_TESTS_PASSED", run_proc_sm.stdout)
 
 
 if __name__ == "__main__":
