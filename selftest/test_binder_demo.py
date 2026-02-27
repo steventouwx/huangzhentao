@@ -71,7 +71,8 @@ class BinderDemoSelfTest(unittest.TestCase):
         example_content = SYSTEM_SM_EXAMPLE_PATH.read_text(encoding="utf-8")
 
         compat_required = [
-            'Class.forName("android.os.ServiceManager")',
+            "private static final String SERVICE_MANAGER_CLASS = \"android.os.ServiceManager\"",
+            "Class.forName(SERVICE_MANAGER_CLASS)",
             'getDeclaredMethod("addService", String.class, IBinder.class)',
             'getDeclaredMethod("getService", String.class)',
             "public static void addService(String serviceName, IBinder serviceBinder)",
