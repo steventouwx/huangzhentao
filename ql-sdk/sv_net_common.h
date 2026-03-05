@@ -11,24 +11,14 @@
 #ifndef __SV_NET_COMMON_H__
 #define __SV_NET_COMMON_H__
 #include <stdint.h>
-
-/**  Maximum length of the APN name. */
 #define SV_NET_MAX_APN_NAME_LEN   150
-
-/**  Maximum length of the APN user name. */
 #define SV_NET_MAX_APN_USERNAME_LEN   127
-
-/**  Maximum length of the password. */
 #define SV_NET_MAX_APN_PASSWORD_LEN   127
-
-/**  Maximum address length. */
 #define SV_NET_MAX_ADDR_LEN       46
 
 #define SV_NET_MAX_IPV6_PREFIX_LEN       64
 
 #define SV_NET_MAX_DATA_CALL_NUM  16
-
-/**  Maximum lenth of the device name. */
 #define SV_NET_MAX_NAME_LEN         32
 #define SV_NET_MAX_RECONNECT_INTERVAL_LEN  20
 #define SV_NET_MAX_APN_ID                  16

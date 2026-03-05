@@ -42,39 +42,30 @@ extern "C" {
 #define SV_DM_MIN_LOG_TIMER_VALUE      30000
 #define SV_DM_MIN_INTERVAL_TIMER_VALUE 60000
 
-//enable
 #define SV_DM_QOOS_ENABLE_MAX          2
 #define SV_DM_QOOS_ENABLE_MIN          0
 
-//pre_time
 #define SV_DM_QOOS_PRE_TIME_MAX        600
 #define SV_DM_QOOS_PRE_TIME_MIN        1
 
-//sleep_time
 #define SV_DM_QOOS_SLEEP_TIME_MAX      (60*60*12)
 #define SV_DM_QOOS_SLEEP_TIME_MIN      1
 
-//acq_time
 #define SV_DM_QOOS_ACQ_TIME_MAX        600
 #define SV_DM_QOOS_ACQ_TIME_MIN        1
 
-//cir_cnt
 #define SV_DM_QOOS_CIR_CNT_MAX         255
 #define SV_DM_QOOS_CIR_CNT_MIN         1
 
-//sleep_step
 #define SV_DM_QOOS_SLEEP_STEP_MAX      60
 #define SV_DM_QOOS_SLEEP_STEP_MIN      0
 
-//acq_step
 #define SV_DM_QOOS_ACQ_STEP_MAX        60
 #define SV_DM_QOOS_ACQ_STEP_MIN        0        
 
-//adj_cnt
 #define SV_DM_QOOS_ADJ_CNT_MAX         5
 #define SV_DM_QOOS_ADJ_CNT_MIN         0
 
-//idle_interval
 #define SV_DM_QOOS_IDLE_INTERVAL_MAX   60
 #define SV_DM_QOOS_IDLE_INTERVAL_MIN   1
 
