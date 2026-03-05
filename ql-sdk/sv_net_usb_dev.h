@@ -8,24 +8,6 @@
  * 修改记录:
  *******************************************/
 
-/**
- * @file sv_net_usb_dev.h
- * @brief USB net device API
- *
- * @copyright Copyright (c) 2018 Quectel Wireless Solution, Co., Ltd. All Rights Reserved.
- * Quectel Wireless Solution Proprietary and Confidential.
- *
- * @detailes
- * EDIT HISTORY
- * This section contains comments describing changes made to the file.
- * Notice that changes are listed in reverse chronological order.
- *
- * $Header: $
- * when      |      who    |what, where, why
- * ----------|-------------|---------------------------------------------------------
- * 20190709  | tyler.kuang |Created
- */
-
 #ifndef __SV_NET_USB_DEV_H__
 #define __SV_NET_USB_DEV_H__
 
@@ -33,7 +15,6 @@
 extern "C" {
 #endif
 #include "sv_net_common.h"
-
 
 typedef void (*sv_net_usb_dev_ind_cb_f)(const char *device,
         SV_NET_USB_DEV_STATUS_E pre_status,
@@ -164,7 +145,6 @@ int sv_net_usb_dev_get_macaddr(const char *device, char *macaddr_buf, int buf_le
   */
 /*-----------------------------------------------------------------------------------------------*/
 int sv_net_usb_dev_set_ind_cb(sv_net_usb_dev_ind_cb_f cb);
-
 
 /*-----------------------------------------------------------------------------------------------*/
 /**

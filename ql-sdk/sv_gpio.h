@@ -8,23 +8,6 @@
  * 修改记录:
  *******************************************/
 
-/**
- * @file sv_gpio.h
- * @brief GPIO API
- *
- * @details
- * QuecOpen AG5xx series module low power manager service API
- *
- * @htmlonly
- * <span style="font-weight: bold">History</span>
- * @endhtmlonly
- *
- * when|who|why
- * ----------|--------------|-------------------------------------------
- *
- * @copyright Copyright (c) 2019 Quectel Wireless Solution, Co., Ltd. All Rights Reserved.
- * Quectel Wireless Solution Proprietary and Confidential.
- */
 #ifndef __SV_GPIO_H__
 #define __SV_GPIO_H__
 
@@ -163,7 +146,6 @@ typedef struct{
     ENUM_PIN_LEVEL          pinLevel;       /**< GPIO pinLevel arrey*/
     ENUM_PIN_PULLSEL        pinPullSel;	    /**< GPIO pinPullSel arrey*/
 }st_gpio_config;
-
 
 /**
  * enum EINT TYPE

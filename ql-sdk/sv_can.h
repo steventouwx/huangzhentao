@@ -9,25 +9,6 @@
  *******************************************/
 
 /*-----------------------------------------------------------------------------------------------*/
-/**
-  @file sv_can.h 
-  @brief Interface for CAN api
-
-  @detailes
-  Quectel AG55x series module gnss service.
-
-  @htmlonly
-  <span style="font-weight: bold">History</span>
-  @endhtmlonly
-  
-  when     |  who      |    what, where, why
-  -------- |  ---      |    ----------------------------------------------------------
-  20191209 |  tyler.kuang  |    Created .
-  
-  Copyright (c) 2020 Quectel Wireless Solution, Co., Ltd. All Rights Reserved.
-  Quectel Wireless Solution Proprietary and Confidential.
--------------------------------------------------------------------------------------------------*/
-
 
 #ifndef __SV_CAN_H__
 #define __SV_CAN_H__
@@ -61,7 +42,6 @@ int sv_can_is_ready(void);
 /*-----------------------------------------------------------------------------------------------*/
 int sv_can_send_speed(int64_t timestamp, uint32_t data);
 
-
 /*-----------------------------------------------------------------------------------------------*/
 /** 
   @brief Inject gear info to CAN service (QDR).
@@ -73,7 +53,6 @@ int sv_can_send_speed(int64_t timestamp, uint32_t data);
   */
 /*-----------------------------------------------------------------------------------------------*/
 int sv_can_send_gear(int64_t timestamp, uint32_t data);
-
 
 /*-----------------------------------------------------------------------------------------------*/
 /** 
@@ -87,7 +66,6 @@ int sv_can_send_gear(int64_t timestamp, uint32_t data);
 /*-----------------------------------------------------------------------------------------------*/
 int sv_can_send_speed_buffer(int64_t timestamp, uint32_t data);
 
-
 /*-----------------------------------------------------------------------------------------------*/
 /** 
   @brief Inject gear info bufferd in MCU or kernel to CAN service (QDR).
@@ -99,7 +77,6 @@ int sv_can_send_speed_buffer(int64_t timestamp, uint32_t data);
   */
 /*-----------------------------------------------------------------------------------------------*/
 int sv_can_send_gear_buffer(int64_t timestamp, uint32_t data);
-
 
 /*-----------------------------------------------------------------------------------------------*/
 /** 
@@ -113,7 +90,6 @@ int sv_can_send_gear_buffer(int64_t timestamp, uint32_t data);
 /*-----------------------------------------------------------------------------------------------*/
 int sv_can_send_suspend(int64_t timestamp, uint32_t data);
 
-
 /*-----------------------------------------------------------------------------------------------*/
 /** 
   @brief Inject resume signal to CAN service
@@ -125,7 +101,6 @@ int sv_can_send_suspend(int64_t timestamp, uint32_t data);
   */
 /*-----------------------------------------------------------------------------------------------*/
 int sv_can_send_resume(int64_t timestamp, uint32_t data);
-
 
 /*-----------------------------------------------------------------------------------------------*/
 /** 

@@ -44,13 +44,9 @@ typedef struct
     sv_err_t (*set_rtcm_freq)(int freq);
 }NTRIP_IFACE;
 
-
-
-
 #ifdef __cplusplus
 }
 #endif
 
 #endif
-
 

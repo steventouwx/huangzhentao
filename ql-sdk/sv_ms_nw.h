@@ -16,11 +16,6 @@
 /*-----------------------------------------------------------------------------------------------*/
 
 /*-------------------------------------------------------------------------------------------------
-  Copyright (c) 2021 Quectel Wireless Solution, Co., Ltd. All Rights Reserved.
-  Quectel Wireless Solution Proprietary and Confidential.
--------------------------------------------------------------------------------------------------*/
-
-/*-------------------------------------------------------------------------------------------------
   EDIT HISTORY
   This section contains comments describing changes made to the file.
   Notice that changes are listed in reverse chronological order.
@@ -142,7 +137,6 @@ typedef struct
   uint8_t op_substate_valid;
   SV_MS_NW_MSIM_OP_SUBSTATE_E op_substate;
 }sv_ms_nw_msim_status_t;
-
 
 typedef struct
 {
@@ -944,7 +938,6 @@ int sv_ms_nw_set_service_error_cb(sv_nw_service_error_cb_f cb);
 #ifdef __cplusplus
 }
 #endif
-
 
 #endif
 

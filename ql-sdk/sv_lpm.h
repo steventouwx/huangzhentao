@@ -8,25 +8,6 @@
  * 修改记录:
  *******************************************/
 
-/**
- * @file sv_lpm.h
- * @brief Low power manager API 
- *
- * @details
- * QuecOpen AG5xx series module low power manager service API
- *
- * @htmlonly 
- * <span style="font-weight: bold">History</span> 
- * @endhtmlonly
- *
- * when|who|why
- * ----------|--------------|-------------------------------------------
- * 20210908  |  ron.zhang   |Add low power manager service white-list APIS.
- *
- * @copyright Copyright (c) 2019 Quectel Wireless Solution, Co., Ltd. All Rights Reserved.
- * Quectel Wireless Solution Proprietary and Confidential.
- */
-
 #ifndef __SV_LPM_H__
 #define __SV_LPM_H__
 
@@ -57,7 +38,6 @@ typedef struct {
 	sv_network_msg_t network_msg;
 	void *privateData;
 } sv_wakeup_info_t;
-
 
 /**
  * enum call state

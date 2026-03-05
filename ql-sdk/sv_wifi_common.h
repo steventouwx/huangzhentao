@@ -9,25 +9,7 @@
  *******************************************/
 
 /*-----------------------------------------------------------------------------------------------*/
-/**
-  @file sv_wifi_common.h
-  @brief  Wi-Fi common data struct
 
-  @detailes
-  Quectel AG55x series module Wi-Fi service.
-
-  @htmlonly
-  <span style="font-weight: bold">History</span>
-  @endhtmlonly
-
-  when       |   who       |    what, where, why
-  --------   |   ---       |    ----------------------------------------------------------
-  2020-04-03 |   ewen.li   |    Created .
-  2021-11-08 |   ewen.li   |    Add Wi-Fi P2P data structure .
-
-  Copyright (c) 2019 Quectel Wireless Solution, Co., Ltd. All Rights Reserved.
-  Quectel Wireless Solution Proprietary and Confidential.
--------------------------------------------------------------------------------------------------*/
 #ifndef __SV_WIFI_COMMON_H__
 #define __SV_WIFI_COMMON_H__
 

@@ -78,7 +78,6 @@ extern "C" {
 #define SV_DM_QOOS_IDLE_INTERVAL_MAX   60
 #define SV_DM_QOOS_IDLE_INTERVAL_MIN   1
 
-
 /*
 * @par 
 *xxxxxxxxxxxxx
@@ -269,7 +268,6 @@ typedef void (*sv_dm_mbn_recovery_cb_f)(SV_IMS_APN_LOST_RECOVERY_STATUS status);
 #ifdef __cplusplus
 }
 #endif
-
 
 #endif
 

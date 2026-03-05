@@ -8,24 +8,6 @@
  * 修改记录:
  *******************************************/
 
-/**
- * @file sv_sleep_wakelock.h
- * @brief Low power manager API
- *
- * @details
- * QuecOpen AG5xx series module low power manager service API
- *
- * @htmlonly
- * <span style="font-weight: bold">History</span>
- * @endhtmlonly
- *
- * when|who|why
- * ----------|-----------|----------------------------------------------
- * 20230523  |  quectel  | Add low power manager service white-list APIS.
- *
- * @copyright Copyright (c) 2019 Quectel Wireless Solution, Co., Ltd. All Rights Reserved.
- * Quectel Wireless Solution Proprietary and Confidential.
- */
 #ifndef __SV_SLEEP_WAKELOCK_H__
 #define __SV_SLEEP_WAKELOCK_H__
 
@@ -47,7 +29,6 @@ extern "C" {
 /*-----------------------------------------------------------------------------------------------*/
 extern int sv_slp_wakelock_create(const char *name, size_t len);
 
-
 /*-----------------------------------------------------------------------------------------------*/
 /**
   @brief Lock the wake lock
@@ -61,7 +42,6 @@ extern int sv_slp_wakelock_create(const char *name, size_t len);
 /*-----------------------------------------------------------------------------------------------*/
 extern int sv_slp_wakelock_lock(int fd);
 
-
 /*-----------------------------------------------------------------------------------------------*/
 /**
   @brief Unlock the wake lock
@@ -74,7 +54,6 @@ extern int sv_slp_wakelock_lock(int fd);
   */
 /*-----------------------------------------------------------------------------------------------*/
 extern int sv_slp_wakelock_unlock(int fd);
-
 
 /*-----------------------------------------------------------------------------------------------*/
 /**
@@ -90,7 +69,6 @@ extern int sv_slp_wakelock_unlock(int fd);
 /*-----------------------------------------------------------------------------------------------*/
 extern int sv_slp_wakelock_status(int fd);
 
-
 /*-----------------------------------------------------------------------------------------------*/
 /**
   @brief Destroy wake lock
@@ -103,7 +81,6 @@ extern int sv_slp_wakelock_status(int fd);
   */
 /*-----------------------------------------------------------------------------------------------*/
 extern int sv_slp_wakelock_destroy(int fd);
-
 
 /*-----------------------------------------------------------------------------------------------*/
 /**

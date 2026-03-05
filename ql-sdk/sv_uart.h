@@ -8,26 +8,7 @@
  * 修改记录:
  *******************************************/
 
-/**
- * @file sv_uart.h
- * @brief UART API 
- *
- * @details
- * QuecOpen AG5xx series UART API
- *
- * @htmlonly 
- * <span style="font-weight: bold">History</span> 
- * @endhtmlonly
- *
- * when|who|why
- * ----------|--------------|-------------------------------------------
- * 20180622  |  Stanley.YONG| Create
- * 20191205  |  larry.zhang | Code  normalization
- * 20201210  |  larry.zhang | Modify the code format
- *
- * @copyright Copyright (c) 2019 Quectel Wireless Solution, Co., Ltd. All Rights Reserved.
- * Quectel Wireless Solution Proprietary and Confidential.
- */  
+  
 #ifndef __SV_UART_H__
 #define __SV_UART_H__
 
@@ -101,7 +82,6 @@ typedef struct {
     Enum_ParityBit      parity;			/**< parity enumeration arrey*/
     Enum_FlowCtrl       flowctrl;		/**< flowctrl enumeration arrey*/
 }ST_UARTDCB;
-
 
 /*-----------------------------------------------------------------------------------------------*/
 /** 
@@ -193,6 +173,5 @@ int  sv_uart_close(int fd);
 #ifdef __cplusplus
 }
 #endif
-
 
 #endif //__SV_UART_H__

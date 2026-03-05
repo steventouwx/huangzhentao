@@ -9,26 +9,6 @@
  *******************************************/
 
 /*-----------------------------------------------------------------------------------------------*/
-/**
-  @file sv_atc.h 
-  @brief AT command API
-
-  @detailes
-  Quectel AG55x series module ATC service.
-
-  @htmlonly
-  <span style="font-weight: bold">History</span>
-  @endhtmlonly
-
-  when     |  who        |  what, where, why
-  -------- |  ---        |  ----------------------------------------------------------
-  20191225 |  stan.li    |  Modify function description.
-  20191225 |  solomon.cui|  Fix possible null pointer dereference.
-  20190702 |  stan.li    |  Created .
-
-  Copyright (c) 2019 Quectel Wireless Solution, Co., Ltd. All Rights Reserved.
-  Quectel Wireless Solution Proprietary and Confidential.
--------------------------------------------------------------------------------------------------*/
 
 #ifndef __SV_ATC_H__
 #define __SV_ATC_H__
@@ -39,7 +19,6 @@ extern "C" {
 
 #define SV_ATC_MAX_REQ_MSG_LEN   513    /**<  Maximum request message size. */
 #define SV_ATC_MAX_RESP_MSG_LEN  4097   /**<  Maximum response message size. */
-
 
 /**
   @brief This function is the callback function indicating AT command sent asynchronously.
@@ -69,7 +48,6 @@ typedef void (*sv_atc_service_error_cb_f)(int error);
 /*-----------------------------------------------------------------------------------------------*/
 int sv_atc_init(void);
 
-
 /*-----------------------------------------------------------------------------------------------*/
 /** 
   @brief This function sends AT command asynchronously. Some AT commands to execute may take a long time, so this function is designed to send AT command asynchronously in order not to affect the use of other functions.
@@ -84,7 +62,6 @@ int sv_atc_init(void);
   */
 /*-----------------------------------------------------------------------------------------------*/
 int sv_atc_send_async(char *req_buf, int *async_index, void *async_cb);
-
 
 /*-----------------------------------------------------------------------------------------------*/
 /** 
@@ -121,10 +98,8 @@ int sv_atc_set_service_error_cb(sv_atc_service_error_cb_f cb);
 /*-----------------------------------------------------------------------------------------------*/
 int sv_atc_deinit(void);
 
-
 #ifdef __cplusplus
 }
 #endif
-
 
 #endif

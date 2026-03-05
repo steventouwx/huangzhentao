@@ -8,25 +8,6 @@
  * 修改记录:
  *******************************************/
 
-/**
- * @file sv_ms_sms.h
- * @brief Sms service API.
- *
- * @details 
- * QuecOpen AG550Q&AG551Q series module sms service. support Dual Sim Dual Active(DSDA). 
- *
- * @htmlonly 
- * <span style="font-weight: bold">History</span> 
- * @endhtmlonly
- *
- * when|who|why
- * ----------|--------------|-------------------------------------------
-  2021069    |Stan.li         |Created.
- *
- * @copyright Copyright (c) 2019 Quectel Wireless Solution, Co., Ltd. All Rights Reserved.
- * Quectel Wireless Solution Proprietary and Confidential.
- * 
- */
 #ifndef __SV_MS_SMS_H__
 #define __SV_MS_SMS_H__
 #ifdef __cplusplus
@@ -328,7 +309,6 @@ int sv_ms_sms_set_service_error_cb(sv_sms_service_error_cb_f cb);
 #ifdef __cplusplus
 }
 #endif
-
 
 #endif
 

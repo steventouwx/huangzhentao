@@ -9,24 +9,6 @@
  *******************************************/
 
 /*-----------------------------------------------------------------------------------------------*/
-/**
-  @file sv_ntrip.h 
-  @brief Interface for ntrip client api
-
-  @detailes
-  Quectel AG55x series module Ntrip Api.
-
-  @htmlonly
-  <span style="font-weight: bold">History</span>
-  @endhtmlonly
-  
-  when     |  who      |    what, where, why
-  -------- |  ---      |    ----------------------------------------------------------
-  20230323 |  raigor.zhao  |    Created .
-  
-  Copyright (c) 2023 Quectel Wireless Solution, Co., Ltd. All Rights Reserved.
-  Quectel Wireless Solution Proprietary and Confidential.
--------------------------------------------------------------------------------------------------*/
 
 #ifndef  SV_NTRIP_H__
 #define  SV_NTRIP_H__
@@ -49,7 +31,6 @@ typedef struct
     CorrectionDataCb correctionDataCb;
     NtripStatusCb ntripStatusCb;
 }SV_NTRIP_CALLBACK;
-
 
 sv_err_t sv_ntrip_init(SV_NTRIP_TYPE_E type,SV_NTRIP_CALLBACK call_back);
 sv_err_t sv_ntrip_deinit(void);
@@ -81,7 +62,6 @@ sv_err_t sv_ntrip_set_rtcm_freq(int FreqPort);
   */
 /*-----------------------------------------------------------------------------------------------*/
 sv_err_t sv_inject_rtcm(void* data, int length);
-
 
 #ifdef __cplusplus
 }

@@ -23,7 +23,6 @@
  * 20210624  |Created
  */
 
-
 #ifndef __SV_MS_DATA_CALL_H__
 #define __SV_MS_DATA_CALL_H__
 #include "sv_data_call_common.h"
@@ -31,8 +30,6 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-
 
 /*-----------------------------------------------------------------------------------------------*/
 /**
@@ -95,7 +92,6 @@ int sv_ms_data_call_param_init(sv_data_call_param_t *param);
 /*-----------------------------------------------------------------------------------------------*/
 int sv_ms_data_call_param_free(sv_data_call_param_t *param);
 
-
 /*-----------------------------------------------------------------------------------------------*/
 /**
   @brief Bind APN ID, range:1-16
@@ -119,7 +115,6 @@ int sv_ms_data_call_param_set_apn_id(sv_data_call_param_t *param, int apn_id);
   */
 /*-----------------------------------------------------------------------------------------------*/
 int sv_ms_data_call_param_get_apn_id(sv_data_call_param_t *param, int *apn_id);
-
 
 /*-----------------------------------------------------------------------------------------------*/
 /**
@@ -196,7 +191,6 @@ int sv_ms_data_call_param_set_user_password(sv_data_call_param_t *param, const c
 /*-----------------------------------------------------------------------------------------------*/
 int sv_ms_data_call_param_get_user_password(sv_data_call_param_t *param, char *buf, int buf_len);
 
-
 /*-----------------------------------------------------------------------------------------------*/
 /**
   @brief Configure the data call authentication method
@@ -220,7 +214,6 @@ int sv_ms_data_call_param_set_auth_pref(sv_data_call_param_t *param, int auth_pr
   */
 /*-----------------------------------------------------------------------------------------------*/
 int sv_ms_data_call_param_get_auth_pref(sv_data_call_param_t *param, int *p_data);
-
 
 /*-----------------------------------------------------------------------------------------------*/
 /**
@@ -602,7 +595,6 @@ int sv_ms_data_call_set_service_error_cb(sv_data_call_service_error_cb_f cb);
   */
 /*-----------------------------------------------------------------------------------------------*/
 int sv_ms_data_call_deinit(void);
-
 
 #ifdef __cplusplus
 }

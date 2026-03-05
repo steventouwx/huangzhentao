@@ -89,7 +89,6 @@ typedef struct
     uint64_t rx_dropped_pkts; /**<The number of packets dropped by received.*/
 }sv_data_call_pkt_stats_t;
 
-
 typedef struct
 {
     unsigned long current_tx_rate;   /**< Current TX data rate, Not support now */
@@ -103,7 +102,6 @@ typedef void (*sv_data_call_status_ind_cb_f)(int call_id,
         sv_data_call_status_t *p_msg);
 
 typedef void (*sv_data_call_service_error_cb_f)(int error);
-
 
 #ifdef __cplusplus
 }

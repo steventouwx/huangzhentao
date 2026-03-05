@@ -8,27 +8,6 @@
  * 修改记录:
  *******************************************/
 
-/**
- * @file sv_sim_common.h
- * @brief Sim service common define
- *
- * @details 
- * module sim service. 
- *
- * @htmlonly 
- * <span style="font-weight: bold">History</span> 
- * @endhtmlonly
- *
- * when|who|why
- * ----------|--------------|-------------------------------------------
-  20230605   |stan.li       |Created .
- *
- * @copyright Copyright (c) 2023 Quectel Wireless Solution, Co., Ltd. All Rights Reserved.
- * Quectel Wireless Solution Proprietary and Confidential.
- * 
- */
-
-
 #ifndef __SV_SIM_COMMON_H__
 #define __SV_SIM_COMMON_H__
 
@@ -83,7 +62,6 @@ typedef enum
     SV_SIM_PIN_1 = 0xB01, /**< Level 1 user verification.  */
     SV_SIM_PIN_2 = 0xB02, /**< Level 2 user verification.  */
 } SV_SIM_PIN_E;
-
 
 /** Enum Application Type */
 typedef enum
@@ -237,7 +215,6 @@ typedef struct
     sv_sim_app_info_t app_isim;     /**<   Stores ISIM application information. */
 } sv_sim_card_info_t;
 
-
 typedef enum {
     SV_SIM_REFRESH_RESET              = 0xB01,  /**< Refresh reset. */
     SV_SIM_REFRESH_NAA_INIT           = 0xB02,  /**< Refresh NAA initialization. */
@@ -276,7 +253,6 @@ typedef struct
     uint32_t refresh_files_len;  /**< Must be set to the number of elements in refresh_files. */
     sv_sim_refresh_file_list_t refresh_files[SV_SIM_MAX_REFRESH_FILES];    /**< Refresh file data. */
 } sv_sim_refresh_info_t;
-
 
 /** Sim file structure  */
 typedef struct {

@@ -16,11 +16,6 @@
 /*-----------------------------------------------------------------------------------------------*/
 
 /*-------------------------------------------------------------------------------------------------
-  Copyright (c) 2019 Quectel Wireless Solution, Co., Ltd. All Rights Reserved.
-  Quectel Wireless Solution Proprietary and Confidential.
--------------------------------------------------------------------------------------------------*/
-
-/*-------------------------------------------------------------------------------------------------
   EDIT HISTORY
   This section contains comments describing changes made to the file.
   Notice that changes are listed in reverse chronological order.
@@ -109,7 +104,6 @@ typedef enum {
     GPIO_AWAKE_ENABLE    /** GPIO awake enable*/
 }ENUM_GPIO_AWAKE;
 
-
 /*-----------------------------------------------------------------------------------------------*/
 /**
      The mode of GPIO Edge Sensivity.
@@ -121,7 +115,6 @@ typedef enum {
     GPIO_EDGE_SENSE_FALLING, /** Falling edge trigger mode */
     GPIO_EDGE_SENSE_BOTH     /** Falling and Rising edge trigger mode  */
 }ENUM_GPIO_EDGE_SENSE_MODE;
-
 
 /*-----------------------------------------------------------------------------------------------*/
 /**
@@ -137,7 +130,6 @@ typedef struct {
     _fdMonitor_CB fdMonitor_proc;/** fdMonitor_cb Object associated to this GPIO*/       
     void* param_cb;              /** the parameter can be passed into fdMonitor_cb*/
 }st_gpio_sysfs;
-
 
 /*-----------------------------------------------------------------------------------------------*/
 /**
@@ -194,7 +186,6 @@ int gpio_sysfs_write_direction(ENUM_PINNAME  pin_name,   ENUM_GPIO_DIR dir );
       */
 /*-----------------------------------------------------------------------------------------------*/
 st_gpio_sysfs* gpio_sysfs_get_gpio_item_by_pin(const ENUM_PINNAME pin_name);
-
 
 /*-----------------------------------------------------------------------------------------------*/
 /**
@@ -326,7 +317,6 @@ int gpio_sysfs_set_edge_sense(ENUM_PINNAME  pin_name,  ENUM_GPIO_EDGE_SENSE_MODE
      */
 /*-----------------------------------------------------------------------------------------------*/
 int gpio_sysfs_write_register(ENUM_PINNAME  pin_name, unsigned char val);
-
 
 /*-----------------------------------------------------------------------------------------------*/
 /**

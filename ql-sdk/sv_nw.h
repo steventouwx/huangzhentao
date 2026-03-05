@@ -9,27 +9,6 @@
  *******************************************/
 
 /*-----------------------------------------------------------------------------------------------*/
-/**
-  @file sv_nw.h 
-  @brief network registration API
-
-  @detailes
-  Quectel AG55x series module NW service.
-
-  @htmlonly
-  <span style="font-weight: bold">History</span>
-  @endhtmlonly
-
-  when     |  who        |  what, where, why
-  -------- |  ---        |  ----------------------------------------------------------
-  20200518 |  rambo.shan |  Add WEA and ETWS alert indication.
-  20191225 |  stan.li    |  Modify function description.
-  20191202 |  stan.li    |  change the name of sv_nw_pref_nwmode_roming_info_t
-  20190528 |  stan.li    |  Created .
-  
-  Copyright (c) 2019 Quectel Wireless Solution, Co., Ltd. All Rights Reserved.
-  Quectel Wireless Solution Proprietary and Confidential.
--------------------------------------------------------------------------------------------------*/
 
 #ifndef __SV_NW_H__
 #define __SV_NW_H__
@@ -138,7 +117,6 @@ typedef void (*sv_nw_lte_rach_fail_ind_cb)(sv_nw_lte_rach_fail_info_t *p_info);
 /*-----------------------------------------------------------------------------------------------*/
 int sv_nw_init(void);
 
-
 /*-----------------------------------------------------------------------------------------------*/
 /** 
   @brief This function scans the current network. The operation takes long time. In order not to affect the normal use of other functions, this function is called asynchronously and the scanning result can be processed in the second parameter (function pointer sv_nw_network_scan_async_cb()) of this function. 
@@ -154,7 +132,6 @@ int sv_nw_init(void);
 /*-----------------------------------------------------------------------------------------------*/
 int sv_nw_network_scan(int *async_index, sv_nw_network_scan_async_cb async_cb);
 
-
 /*-----------------------------------------------------------------------------------------------*/
 /** 
   @brief This function sets power mode. You can disable the reporting of the service messages according to your needs to avoid waking up the device abnormally by corresponding events. It is supported to disable the message reporting of several services simultaneously. The setting of this function will not be saved after power-off.
@@ -168,7 +145,6 @@ int sv_nw_network_scan(int *async_index, sv_nw_network_scan_async_cb async_cb);
   */
 /*-----------------------------------------------------------------------------------------------*/
 int sv_nw_set_power_mode(uint8_t lower_mode);
-
 
 /*-----------------------------------------------------------------------------------------------*/
 /** 
@@ -184,7 +160,6 @@ int sv_nw_set_power_mode(uint8_t lower_mode);
 /*-----------------------------------------------------------------------------------------------*/
 int sv_nw_get_power_mode(uint8_t *lower_mode);
 
-
 /*-----------------------------------------------------------------------------------------------*/
 /** 
   @brief This function sets the preferred network mode and roaming notification status. The setting of this function will be saved in the event of power failure.
@@ -198,7 +173,6 @@ int sv_nw_get_power_mode(uint8_t *lower_mode);
   */
 /*-----------------------------------------------------------------------------------------------*/
 int sv_nw_set_pref_nwmode_roaming(sv_nw_pref_nwmode_roaming_info_t *p_info);
-
 
 /*-----------------------------------------------------------------------------------------------*/
 /** 
@@ -214,7 +188,6 @@ int sv_nw_set_pref_nwmode_roaming(sv_nw_pref_nwmode_roaming_info_t *p_info);
 /*-----------------------------------------------------------------------------------------------*/
 int sv_nw_get_pref_nwmode_roaming(sv_nw_pref_nwmode_roaming_info_t *p_info);
 
-
 /*-----------------------------------------------------------------------------------------------*/
 /** 
   @brief This function gets the information of a mobile network operator (wireless carrier).
@@ -228,7 +201,6 @@ int sv_nw_get_pref_nwmode_roaming(sv_nw_pref_nwmode_roaming_info_t *p_info);
   */
 /*-----------------------------------------------------------------------------------------------*/
 int sv_nw_get_mobile_operator_name(sv_nw_mobile_operator_name_info_t *p_info);
-
 
 /*-----------------------------------------------------------------------------------------------*/
 /** 
@@ -258,7 +230,6 @@ int sv_nw_get_cell_info(sv_nw_cell_info_t *p_info);
 /*-----------------------------------------------------------------------------------------------*/
 int sv_nw_get_voice_reg_status(sv_nw_reg_status_info_t *p_info);
 
-
 /*-----------------------------------------------------------------------------------------------*/
 /** 
   @brief This function gets data-dialing registration information.
@@ -272,7 +243,6 @@ int sv_nw_get_voice_reg_status(sv_nw_reg_status_info_t *p_info);
   */
 /*-----------------------------------------------------------------------------------------------*/
 int sv_nw_get_data_reg_status(sv_nw_reg_status_info_t *p_info);
-
 
 /*-----------------------------------------------------------------------------------------------*/
 /** 
@@ -289,7 +259,6 @@ int sv_nw_get_data_reg_status(sv_nw_reg_status_info_t *p_info);
 /*-----------------------------------------------------------------------------------------------*/
 int sv_nw_get_signal_strength(sv_nw_signal_strength_info_t *p_info, SV_NW_SIGNAL_STRENGTH_LEVEL_E* p_level);
 
-
 /*-----------------------------------------------------------------------------------------------*/
 /** 
   @brief This function gets the current cell access state.
@@ -303,7 +272,6 @@ int sv_nw_get_signal_strength(sv_nw_signal_strength_info_t *p_info, SV_NW_SIGNAL
   */
 /*-----------------------------------------------------------------------------------------------*/
 int sv_nw_get_cell_access_status(SV_NW_CELL_ACCESS_STATE_TYPE_E *p_info);
-
 
 /*-----------------------------------------------------------------------------------------------*/
 /** 
@@ -319,7 +287,6 @@ int sv_nw_get_cell_access_status(SV_NW_CELL_ACCESS_STATE_TYPE_E *p_info);
 /*-----------------------------------------------------------------------------------------------*/
 int sv_nw_get_nitz_time_info(sv_nw_nitz_time_info_t *p_info);
 
-
 /*-----------------------------------------------------------------------------------------------*/
 /** 
   @brief This function sets callback function for voice-dialing registration event.
@@ -333,7 +300,6 @@ int sv_nw_get_nitz_time_info(sv_nw_nitz_time_info_t *p_info);
  */
 /*-----------------------------------------------------------------------------------------------*/
 int sv_nw_set_voice_reg_ind_cb(sv_nw_voice_reg_ind_cb cb_func);
-
 
 /*-----------------------------------------------------------------------------------------------*/
 /** 
@@ -349,7 +315,6 @@ int sv_nw_set_voice_reg_ind_cb(sv_nw_voice_reg_ind_cb cb_func);
 /*-----------------------------------------------------------------------------------------------*/
 int sv_nw_set_data_reg_ind_cb(sv_nw_data_reg_ind_cb cb_func);
 
-
 /*-----------------------------------------------------------------------------------------------*/
 /** 
   @brief This function sets the callback function for signal strength event.
@@ -364,7 +329,6 @@ int sv_nw_set_data_reg_ind_cb(sv_nw_data_reg_ind_cb cb_func);
 /*-----------------------------------------------------------------------------------------------*/
 int sv_nw_set_signal_strength_ind_cb(sv_nw_signal_strength_ind_cb cb_func);
 
-
 /*-----------------------------------------------------------------------------------------------*/
 /** 
   @brief This function sets the callback function for cell access state change event.
@@ -378,7 +342,6 @@ int sv_nw_set_signal_strength_ind_cb(sv_nw_signal_strength_ind_cb cb_func);
   */
 /*-----------------------------------------------------------------------------------------------*/
 int sv_nw_set_cell_access_status_ind_cb(sv_nw_cell_access_status_ind_cb cb_func);
-
 
 /*-----------------------------------------------------------------------------------------------*/
 /** 
@@ -450,7 +413,6 @@ int sv_nw_set_ims_reg_status_ind_cb(sv_nw_ims_reg_status_ind_cb cb_func);
 /*-----------------------------------------------------------------------------------------------*/
 int sv_nw_set_rf_band_info_ind_cb(sv_nw_rf_band_info_ind_cb cb_func);
 
-
 /*-----------------------------------------------------------------------------------------------*/
 /** 
   @brief register lte rach fail event.
@@ -464,7 +426,6 @@ int sv_nw_set_rf_band_info_ind_cb(sv_nw_rf_band_info_ind_cb cb_func);
   */
 /*-----------------------------------------------------------------------------------------------*/
 int sv_nw_set_lte_rach_fail_ind_cb(sv_nw_lte_rach_fail_ind_cb cb_func);
-
 
 /*-----------------------------------------------------------------------------------------------*/
 /** 
@@ -719,7 +680,6 @@ int sv_nw_set_deprioritize_nr5g_enable(uint8_t deprioritize_nr5g_enable);
 /*-----------------------------------------------------------------------------------------------*/
 int sv_nw_trigger_wwan_reset(void);
 
-
 /*-----------------------------------------------------------------------------------------------*/
 /**
   @brief Get the DRX for the device.DRX interface takes effect only after the network injection is successful
@@ -741,7 +701,6 @@ int sv_nw_get_drx(sv_nw_get_drx_t * get_drx_ptr);
   */
 /*-----------------------------------------------------------------------------------------------*/
 int sv_nw_set_drx(sv_nw_set_drx_t set_drx);
-
 
 /*-----------------------------------------------------------------------------------------------*/
 /**

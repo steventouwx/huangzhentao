@@ -16,11 +16,6 @@
 /*-----------------------------------------------------------------------------------------------*/
 
 /*-------------------------------------------------------------------------------------------------
-  Copyright (c) 2018 Quectel Wireless Solution, Co., Ltd. All Rights Reserved.
-  Quectel Wireless Solution Proprietary and Confidential.
--------------------------------------------------------------------------------------------------*/
-
-/*-------------------------------------------------------------------------------------------------
   EDIT HISTORY
   This section contains comments describing changes made to the file.
   Notice that changes are listed in reverse chronological order.
@@ -40,7 +35,6 @@ typedef int sv_err_t ;
 
 #define SV_EID_BASE      1000
 #define SV_EID_EXTEND    10000
-
 
 #define SV_ERR_OK                       0                   /* Success */
 #define SV_ERR_FAILED                   (-(SV_EID_BASE+1))  /* Failed */

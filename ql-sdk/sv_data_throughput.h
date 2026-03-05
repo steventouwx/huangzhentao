@@ -16,11 +16,6 @@
 /*-----------------------------------------------------------------------------------------------*/
 
 /*-------------------------------------------------------------------------------------------------
-  Copyright (c) 2024 Quectel Wireless Solution, Co., Ltd. All Rights Reserved.
-  Quectel Wireless Solution Proprietary and Confidential.
--------------------------------------------------------------------------------------------------*/
-
-/*-------------------------------------------------------------------------------------------------
   EDIT HISTORY
   This section contains comments describing changes made to the file.
   Notice that changes are listed in reverse chronological order.

@@ -8,24 +8,6 @@
  * 修改记录:
  *******************************************/
 
-/**
- * @file sv_nf.h 
- * @brief Network framework API 
- *
- * @copyright Copyright (c) 2018 Quectel Wireless Solution, Co., Ltd. All Rights Reserved.
- * Quectel Wireless Solution Proprietary and Confidential.
- *
- * @detailes
- * EDIT HISTORY
- * This section contains comments describing changes made to the file.
- * Notice that changes are listed in reverse chronological order.
- *
- * $Header: $
- * when      |      who    |what, where, why
- * ----------|-------------|---------------------------------------------------------
- * 20181024  | tyler.kuang |Created
- */
-
 #ifndef __SV_NF_H__
 #define __SV_NF_H__
 #include <sys/socket.h>

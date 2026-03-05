@@ -16,11 +16,6 @@
 /*-----------------------------------------------------------------------------------------------*/
 
 /*-------------------------------------------------------------------------------------------------
-  Copyright (c) 2021 Quectel Wireless Solution, Co., Ltd. All Rights Reserved.
-  Quectel Wireless Solution Proprietary and Confidential.
--------------------------------------------------------------------------------------------------*/
-
-/*-------------------------------------------------------------------------------------------------
   EDIT HISTORY
   This section contains comments describing changes made to the file.
   Notice that changes are listed in reverse chronological order.
@@ -54,7 +49,6 @@ typedef void (*sv_ms_dm_air_plane_mode_ind_cb)(int sim_id, SV_DM_AIR_PLANE_MODE_
 /*-----------------------------------------------------------------------------------------------*/
 int sv_ms_dm_init(void);
 
-
 /*-----------------------------------------------------------------------------------------------*/
 /**
   @brief Deinitialize DM service.
@@ -64,7 +58,6 @@ int sv_ms_dm_init(void);
   */
 /*-----------------------------------------------------------------------------------------------*/
 int sv_ms_dm_deinit(void);
-
 
 /*-----------------------------------------------------------------------------------------------*/
 /** 
@@ -80,7 +73,6 @@ int sv_ms_dm_deinit(void);
   */
 /*-----------------------------------------------------------------------------------------------*/
 int sv_ms_dm_get_software_version(char *soft_ver, int soft_ver_len);
-
 
 /*-----------------------------------------------------------------------------------------------*/
 /** 
@@ -99,7 +91,6 @@ int sv_ms_dm_get_software_version(char *soft_ver, int soft_ver_len);
 /*-----------------------------------------------------------------------------------------------*/
 int sv_ms_dm_get_modem_state(SV_DM_MODEM_STATE_TYPE_E *modem_state);
 
-
 /*-----------------------------------------------------------------------------------------------*/
 /** 
   @brief register modem state event. 
@@ -114,7 +105,6 @@ int sv_ms_dm_get_modem_state(SV_DM_MODEM_STATE_TYPE_E *modem_state);
 /*-----------------------------------------------------------------------------------------------*/
 int sv_ms_dm_set_modem_state_change_ind_cb(sv_dm_modem_state_ind_cb cb_func);
 
-
 /*-----------------------------------------------------------------------------------------------*/
 /**
   @brief register modem offline reason event.
@@ -128,7 +118,6 @@ int sv_ms_dm_set_modem_state_change_ind_cb(sv_dm_modem_state_ind_cb cb_func);
   */
 /*-----------------------------------------------------------------------------------------------*/
 int sv_ms_dm_set_modem_offline_reason_ind_cb(sv_dm_modem_offline_reason_ind_cb cb_func);
-
 
 /*-----------------------------------------------------------------------------------------------*/
 /** 
@@ -159,7 +148,6 @@ int sv_ms_dm_get_temperature(float *temperature);
 /*-----------------------------------------------------------------------------------------------*/
 int sv_ms_dm_get_temperature_ex(int index, float *temperature);
 
-
 /*-----------------------------------------------------------------------------------------------*/
 /** 
   @brief get device serial numbers. 
@@ -173,7 +161,6 @@ int sv_ms_dm_get_temperature_ex(int index, float *temperature);
   */
 /*-----------------------------------------------------------------------------------------------*/
 int sv_ms_dm_get_device_serial_numbers(sv_dm_device_serial_numbers_info_t *p_info);
-
 
 /*-----------------------------------------------------------------------------------------------*/
 /** 
@@ -189,7 +176,6 @@ int sv_ms_dm_get_device_serial_numbers(sv_dm_device_serial_numbers_info_t *p_inf
   */
 /*-----------------------------------------------------------------------------------------------*/
 int sv_ms_dm_get_device_firmware_rev_id(char *firmware_rev_id, int firmware_rev_id_len);
-
 
 /*-----------------------------------------------------------------------------------------------*/
 /**
@@ -220,7 +206,6 @@ int sv_ms_dm_get_radio_mode(int sim_id, SV_DM_RADIO_MODE_TYPE_E *p_info);
 /*-----------------------------------------------------------------------------------------------*/
 int sv_ms_dm_get_air_plane_mode(int sim_id, SV_DM_AIR_PLANE_MODE_TYPE_E *p_info);
 
-
 /*-----------------------------------------------------------------------------------------------*/
 /** 
   @brief set air plane mode. 
@@ -235,7 +220,6 @@ int sv_ms_dm_get_air_plane_mode(int sim_id, SV_DM_AIR_PLANE_MODE_TYPE_E *p_info)
   */
 /*-----------------------------------------------------------------------------------------------*/
 int sv_ms_dm_set_air_plane_mode(int sim_id, SV_DM_AIR_PLANE_MODE_TYPE_E air_plane_mode);
-
 
 /*-----------------------------------------------------------------------------------------------*/
 /** 
@@ -252,7 +236,6 @@ int sv_ms_dm_set_air_plane_mode(int sim_id, SV_DM_AIR_PLANE_MODE_TYPE_E air_plan
 /*-----------------------------------------------------------------------------------------------*/
 int sv_ms_dm_set_air_plane_mode_ind_cb(int sim_id, sv_ms_dm_air_plane_mode_ind_cb cb_func);
 
-
 /*-----------------------------------------------------------------------------------------------*/
 /** 
   @brief get cpu occupancy. 
@@ -267,7 +250,6 @@ int sv_ms_dm_set_air_plane_mode_ind_cb(int sim_id, sv_ms_dm_air_plane_mode_ind_c
 /*-----------------------------------------------------------------------------------------------*/
 int sv_ms_dm_get_cpu_occupancy(float *cpu_occupancy);
 
-
 /*-----------------------------------------------------------------------------------------------*/
 /** 
   @brief get mem usage. 
@@ -281,7 +263,6 @@ int sv_ms_dm_get_cpu_occupancy(float *cpu_occupancy);
   */
 /*-----------------------------------------------------------------------------------------------*/
 int sv_ms_dm_get_mem_usage(float *mem_use);
-
 
 /*-----------------------------------------------------------------------------------------------*/
 /** 
@@ -332,7 +313,6 @@ int sv_ms_dm_set_nv_item_value(char *nv_item_name, unsigned char *nv_item_value,
   */
 /*-----------------------------------------------------------------------------------------------*/
 int sv_ms_dm_set_radio_on(int sim_id);
-
 
 /*-----------------------------------------------------------------------------------------------*/
 /** 
@@ -436,7 +416,6 @@ int sv_ms_dm_get_qoos_config(int sim_id, sv_dm_qoos_config_t *config);
 /*-----------------------------------------------------------------------------------------------*/
 int sv_ms_dm_set_qoos_config(int sim_id, sv_dm_qoos_config_t config);
 
-
 /*-----------------------------------------------------------------------------------------------*/
 /** 
   @brief get MSSR(Modem SubSysem Reset) level. 
@@ -451,7 +430,6 @@ int sv_ms_dm_set_qoos_config(int sim_id, sv_dm_qoos_config_t config);
 /*-----------------------------------------------------------------------------------------------*/
 int sv_ms_dm_get_mssr_level(int *p_level);
 
-
 /*-----------------------------------------------------------------------------------------------*/
 /** 
   @brief set MSSR(Modem SubSysem Reset) level. 
@@ -465,7 +443,6 @@ int sv_ms_dm_get_mssr_level(int *p_level);
   */
 /*-----------------------------------------------------------------------------------------------*/
 int sv_ms_dm_set_mssr_level(int level);
-
 
 /*-----------------------------------------------------------------------------------------------*/
 /**
@@ -578,7 +555,6 @@ int sv_ms_dm_get_period_log_enable(int *enable, int *log_time, int *interval_tim
 /*-----------------------------------------------------------------------------------------------*/
 int sv_ms_dm_set_period_log_enable(int enable, int log_time, int interval_time);
 
-
 /*-----------------------------------------------------------------------------------------------*/
 /**
   @brief  Set the callback function to notify the application layer to restart after detecting the recovery of ims apn loss.
@@ -621,7 +597,6 @@ int sv_ms_dm_switch_antenna(SV_DM_ANTENNA_E antenna);
 #ifdef __cplusplus
 }
 #endif
-
 
 #endif
 

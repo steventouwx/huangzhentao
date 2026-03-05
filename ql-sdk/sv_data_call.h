@@ -93,7 +93,6 @@ int sv_data_call_param_init(sv_data_call_param_t *param);
 /*-----------------------------------------------------------------------------------------------*/
 int sv_data_call_param_free(sv_data_call_param_t *param);
 
-
 /*-----------------------------------------------------------------------------------------------*/
 /**
   @brief Bind APN ID, range:1-16
@@ -117,7 +116,6 @@ int sv_data_call_param_set_apn_id(sv_data_call_param_t *param, int apn_id);
   */
 /*-----------------------------------------------------------------------------------------------*/
 int sv_data_call_param_get_apn_id(sv_data_call_param_t *param, int *apn_id);
-
 
 /*-----------------------------------------------------------------------------------------------*/
 /**
@@ -194,7 +192,6 @@ int sv_data_call_param_set_user_password(sv_data_call_param_t *param, const char
 /*-----------------------------------------------------------------------------------------------*/
 int sv_data_call_param_get_user_password(sv_data_call_param_t *param, char *buf, int buf_len);
 
-
 /*-----------------------------------------------------------------------------------------------*/
 /**
   @brief Configure the data call authentication method
@@ -218,7 +215,6 @@ int sv_data_call_param_set_auth_pref(sv_data_call_param_t *param, int auth_pref)
   */
 /*-----------------------------------------------------------------------------------------------*/
 int sv_data_call_param_get_auth_pref(sv_data_call_param_t *param, int *p_data);
-
 
 /*-----------------------------------------------------------------------------------------------*/
 /**
@@ -463,7 +459,6 @@ int sv_data_call_set_apn_config(int apn_id, sv_data_call_apn_config_t *p_info);
   */
 /*-----------------------------------------------------------------------------------------------*/
 int sv_data_call_get_apn_config(int apn_id, sv_data_call_apn_config_t *p_info);
-
 
 /*-----------------------------------------------------------------------------------------------*/
 /**

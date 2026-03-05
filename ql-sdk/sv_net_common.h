@@ -176,7 +176,6 @@ typedef enum {
 #define IS_SV_NET_PROTOCOL_VALID(ver) \
     ((ver)>SV_NET_PROTOCOL_ENUM_MIN_ENUM_VAL_V01 && (ver)<SV_NET_PROTOCOL_ENUM_MAX_ENUM_VAL_V01)
 
-
 typedef struct
 {
     char addr[SV_NET_MAX_ADDR_LEN];

@@ -8,32 +8,6 @@
  * 修改记录:
  *******************************************/
 
-/**
- * @file sv_sms.h
- * @brief Sms service API.
- *
- * @details 
- * QuecOpen AG550Q&AG551Q series module sim service. 
- *
- * @htmlonly 
- * <span style="font-weight: bold">History</span> 
- * @endhtmlonly
- *
- * when|who|why
- * ----------|--------------|-------------------------------------------
-  20200107   |solomon.cui     |Add GSM-7bit and ISO 8859-1 conversion.
-  20191225   |solomon.cui     |Modify fucntion description.
-  20191017   |solomon.cui     |Free async reponse not user data.
-  20190815   |solomon.cui     |Add service type for sending message.
-  20190627   |solomon.cui     |Support asynchronously send msg and pdu
-  20190625   |solomon.cui     |Convert timestamp frome hex to dec.
-  20190614   |solomon.cui     |Created .
- *
- * @copyright Copyright (c) 2019 Quectel Wireless Solution, Co., Ltd. All Rights Reserved.
- * Quectel Wireless Solution Proprietary and Confidential.
- * 
- */
-
 #ifndef __SV_SMS_H__
 #define __SV_SMS_H__
 
@@ -226,7 +200,6 @@ int sv_sms_set_service_error_cb(sv_sms_service_error_cb_f cb);
   */
 /*-----------------------------------------------------------------------------------------------*/
 int sv_sms_bind_subscription(SV_SMS_SUBSCRIPTION_E sub);
-
 
 /*-----------------------------------------------------------------------------------------------*/
 /** 

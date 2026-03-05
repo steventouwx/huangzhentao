@@ -8,25 +8,6 @@
  * 修改记录:
  *******************************************/
 
-/**
- * @file sv_ms_sim.h
- * @brief Sim service API.
- *
- * @details 
- * module sim service. support Dual Sim Dual Active(DSDA). 
- *
- * @htmlonly 
- * <span style="font-weight: bold">History</span> 
- * @endhtmlonly
- *
- * when|who|why
- * ----------|--------------|-------------------------------------------
-  2021069    |Stan.li       |Created.
- *
- * @copyright Copyright (c) 2019 Quectel Wireless Solution, Co., Ltd. All Rights Reserved.
- * Quectel Wireless Solution Proprietary and Confidential.
- * 
- */
 #ifndef __SV_MS_SIM_H__
 #define __SV_MS_SIM_H__
 
@@ -437,7 +418,6 @@ int sv_ms_sim_get_eid(int sim_id, char *eid, int eid_len);
 #ifdef __cplusplus
 }
 #endif
-
 
 #endif
 

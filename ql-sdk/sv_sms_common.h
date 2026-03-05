@@ -56,7 +56,6 @@ typedef enum {
   SV_SMS_SECONDARY_SUBSCRIPTION    = 1,  /**< The second card*/
 } SV_SMS_SUBSCRIPTION_E;
 
-
 /** The SMS message structure. */
 typedef struct 
 {
@@ -100,7 +99,6 @@ typedef struct
  */
 typedef void (*sv_sms_msg_async_cb_f)(int id, int result);
 
-
 /**
  * send SMS messages asynchronously error callback function
  * @param[in] p_msg: Text messages
@@ -125,7 +123,6 @@ typedef struct
     int content_size;   /**< PDU Length */ 
     char content[SV_SMS_MAX_SEND_PDU_LENGTH];   /**< PDU Content */
 } sv_sms_pdu_t;
-
 
 /** The SMS white-list info structure. */
 typedef struct 

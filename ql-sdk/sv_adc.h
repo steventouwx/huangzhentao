@@ -8,30 +8,9 @@
  * 修改记录:
  *******************************************/
 
-/**
- * @file sv_adc.h
- * @brief ADC API 
- *
- * @details
- * QuecOpen AG5xx series ADC API
- *
- * @htmlonly 
- * <span style="font-weight: bold">History</span> 
- * @endhtmlonly
- *
- * when|who|why
- * ----------|--------------|-------------------------------------------
- * 20180627  |  QUECTEL     | Create
- * 20181224  |  juson       | add adc 2
- * 20191211  |  larry.zhang | Modify the code format
- * 20210918  |  ron.zhang   | Modify the code comment for doxygen
- *
- * @copyright Copyright (c) 2019 Quectel Wireless Solution, Co., Ltd. All Rights Reserved.
- * Quectel Wireless Solution Proprietary and Confidential.
- */  
+  
 #ifndef _SV_ADC_H_
 #define _SV_ADC_H_
-
 
 #ifdef __cplusplus
 extern "C" {
@@ -66,6 +45,5 @@ char* sv_get_line_from_file(const char* file_name, int line, char* buf, int len)
 #ifdef __cplusplus
 }
 #endif
-
 
 #endif

@@ -8,29 +8,6 @@
  * 修改记录:
  *******************************************/
 
-/**
- * @file sv_sim.h
- * @brief Sim service API.
- *
- * @details 
- * series module sim service. 
- *
- * @htmlonly 
- * <span style="font-weight: bold">History</span> 
- * @endhtmlonly
- *
- * when|who|why
- * ----------|--------------|-------------------------------------------
-  20200511   |solomon.cui  |Add support for multiple slots.
-  20191225   |solomon.cui  |Modify fucntion description.
-  20190717   |solomon.cui  |Created .
- *
- * @copyright Copyright (c) 2019 Quectel Wireless Solution, Co., Ltd. All Rights Reserved.
- * Quectel Wireless Solution Proprietary and Confidential.
- * 
- */
-
-
 #ifndef __SV_SIM_H__
 #define __SV_SIM_H__
 

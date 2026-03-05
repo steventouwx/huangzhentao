@@ -9,24 +9,7 @@
  *******************************************/
 
 /*-----------------------------------------------------------------------------------------------*/
-/**
-  @file sv_audio_cfg.h
-  @brief audio config API, including audio initlization, audio configuration
 
-  @detailes
-  Quectel AG55x series module AUDIO service.
-
-  @htmlonly
-  <span style="font-weight: bold">History</span>
-  @endhtmlonly
-
-  when       |   who      |    what, where, why
-  --------   |   ---      |    ----------------------------------------------------------
-  2024-11-08    ewen.li      Created 
-
-  Copyright (c) 2019 Quectel Wireless Solution, Co., Ltd. All Rights Reserved.
-  Quectel Wireless Solution Proprietary and Confidential.
--------------------------------------------------------------------------------------------------*/
 #ifndef __SV_AUDIO_CFG_H__
 #define __SV_AUDIO_CFG_H__
 

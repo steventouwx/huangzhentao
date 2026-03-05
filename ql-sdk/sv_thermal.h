@@ -8,26 +8,6 @@
  * 修改记录:
  *******************************************/
 
-/**
- * @file sv_thermal.h
- * @brief thermal mitigation function API.
- *
- * @details 
- * QuecOpen AG59x series module sim service. 
- *
- * @htmlonly 
- * <span style="font-weight: bold">History</span> 
- * @endhtmlonly
- *
- * when|who|why
- * ----------|--------------|-------------------------------------------
-  20231124   |trigger.xu    |Created .
- *
- * @copyright Copyright (c) 2023 Quectel Wireless Solution, Co., Ltd. All Rights Reserved.
- * Quectel Wireless Solution Proprietary and Confidential.
- * 
- */
-
 #ifndef __SV_THERMAL_H__
 #define __SV_THERMAL_H__
 #include <stdint.h>

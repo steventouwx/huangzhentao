@@ -16,11 +16,6 @@
 /*-----------------------------------------------------------------------------------------------*/
 
 /*-------------------------------------------------------------------------------------------------
-  Copyright (c) 2018 Quectel Wireless Solution, Co., Ltd. All Rights Reserved.
-  Quectel Wireless Solution Proprietary and Confidential.
--------------------------------------------------------------------------------------------------*/
-
-/*-------------------------------------------------------------------------------------------------
   EDIT HISTORY
   This section contains comments describing changes made to the file.
   Notice that changes are listed in reverse chronological order.
@@ -67,7 +62,6 @@ typedef enum {
 /*-----------------------------------------------------------------------------------------------*/
 int sv_usb_switch_func(sv_usb_switch_func_type name, unsigned char action);
 
-
 /*-----------------------------------------------------------------------------------------------*/
 /**
   @brief  enable all usb port. It will take effect after reboot.
@@ -77,7 +71,6 @@ int sv_usb_switch_func(sv_usb_switch_func_type name, unsigned char action);
 /*-----------------------------------------------------------------------------------------------*/
 int sv_enable_usb(void);
 
-
 /*-----------------------------------------------------------------------------------------------*/
 /**
   @brief  disable all usb port. It will take effect after reboot.
@@ -86,7 +79,6 @@ int sv_enable_usb(void);
   */
 /*-----------------------------------------------------------------------------------------------*/
 int sv_disable_usb(void);
-
 
 #ifdef __cplusplus
 }

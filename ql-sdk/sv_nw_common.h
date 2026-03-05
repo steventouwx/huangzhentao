@@ -77,7 +77,6 @@ typedef enum SV_NW_SIGNAL_STRENGTH_LEVEL_ENUM
     SV_NW_SIGNAL_STRENGTH_LEVEL_MAX
 }SV_NW_SIGNAL_STRENGTH_LEVEL_E;
 
-
 /**<  roaming notification status*/
 typedef enum SV_NW_ROAM_STATE_TYPE_ENUM
 {
@@ -119,7 +118,6 @@ typedef enum SV_NW_RADIO_TECH_TYPE_ENUM
     SV_NW_RADIO_TECH_NR5G     = 18,   /**<  NR5G. */
     SV_NW_RADIO_TECH_NONE     = 19    /**<  No technology selected. */
 }SV_NW_RADIO_TECH_TYPE_E;
-
 
 /**<  technical specification type*/
 typedef enum SV_NW_TECH_DOMAIN_TYPE_ENUM
@@ -189,7 +187,6 @@ typedef enum SV_NW_DENY_REASON_TYPE_ENUM
     SV_NW_MESSAGE_NOT_COMPATIBLE_WITH_PROTOCAL_STATE_DENY_REASON            = 101, /**<  Message not compatible with protocol state. */
     SV_NW_PROTOCAL_ERROR_DENY_REASON                                        = 111, /**<  Protocol error, unspecified. */
 }SV_NW_DENY_REASON_TYPE_E;
-
 
 /**<  RF BAND INFO*/
 typedef enum SV_NW_BAND_INFO_ENUM
@@ -366,7 +363,6 @@ typedef enum SV_NW_BAND_INFO_ENUM
     SV_NW_ACTIVE_BAND_NR5G_BAND_47_V01 = 312
 }SV_NW_BAND_INFO_E;
 
-
 /**<  network service type*/
 typedef enum SV_NW_SERVICE_TYPE_ENUM
 {
@@ -374,7 +370,6 @@ typedef enum SV_NW_SERVICE_TYPE_ENUM
     SV_NW_SERVICE_LIMITED = 1,  /**<  Restricted service. */
     SV_NW_SERVICE_FULL    = 2,  /**<  Normal service. */
 }SV_NW_SERVICE_TYPE_E;
-
 
 typedef enum SV_NW_SELECTION_TYPE_ENUM
 {
@@ -433,7 +428,6 @@ typedef struct
     uint64_t   preferred_nw_mode;               /**<   Preferred network mode for connections; a bitmask of SV_NW_MODE_xxxx.*/
     SV_NW_ROAM_STATE_TYPE_E preferred_roaming;  /**<   depreferrted*/
 }sv_nw_pref_nwmode_roaming_info_t;
-
 
 /**<  network time information*/
 typedef struct 

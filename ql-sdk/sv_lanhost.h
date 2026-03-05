@@ -8,24 +8,6 @@
  * 修改记录:
  *******************************************/
 
-/**
- * @file sv_lanhost.h 
- * @brief LANHOST API 
- *
- * @copyright Copyright (c) 2018 Quectel Wireless Solution, Co., Ltd. All Rights Reserved.
- * Quectel Wireless Solution Proprietary and Confidential.
- * 
- * @detailes
- * EDIT HISTORY
- * This section contains comments describing changes made to the file.
- * Notice that changes are listed in reverse chronological order.
- *
- * $Header: $
- * when     |    who       |  what, where, why
- * ---------|------------- |-------------------------------------------------------------
- * 20191016 |  tyler.kuang |  Created
- */
-
 #ifndef __SV_LANHOST_H__
 #define __SV_LANHOST_H__
 
@@ -33,7 +15,6 @@
 extern "C" {
 #endif
 #include "sv_net_common.h"
-
 
 typedef void (*sv_lanhost_ind_cb_f)(SV_LANHOST_EVENT_TYPE_E event_type, sv_lanhost_t *p_host);
 

@@ -9,25 +9,6 @@
  *******************************************/
 
 /*-----------------------------------------------------------------------------------------------*/
-/**
-  @file sv_sensor_utils.h 
-  @brief Get sensor data used by QDR
-
-  @detailes
-  Quectel AG55x series module IMU sensor API.
-
-  @htmlonly
-  <span style="font-weight: bold">History</span>
-  @endhtmlonly
-  
-  when     |  who      |    what, where, why
-  -------- |  ---      |    ----------------------------------------------------------
-  20201030 |  raigor.zhao  |    Add temp data .
-  20190715 |  tyler.kuang  |    Created .
-  
-  Copyright (c) 2020 Quectel Wireless Solution, Co., Ltd. All Rights Reserved.
-  Quectel Wireless Solution Proprietary and Confidential.
--------------------------------------------------------------------------------------------------*/
 
 #ifndef __SV_SENSOR_UTILS_H__
 #define __SV_SENSOR_UTILS_H__

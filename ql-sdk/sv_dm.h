@@ -9,26 +9,6 @@
  *******************************************/
 
 /*-----------------------------------------------------------------------------------------------*/
-/**
-  @file sv_dm.h 
-  @brief device management API
-
-  @detailes
-  Quectel AG55x series module dm service.
-
-  @htmlonly
-  <span style="font-weight: bold">History</span>
-  @endhtmlonly
-  
-  when     |  who      |    what, where, why
-  -------- |  ---      |    ----------------------------------------------------------
-  20200316 |  stan.li  |    Optimize the sv_dm_get_modem_state interface
-  20191224 |  stan.li  |    Add radio on/off API
-  20190625 |  stan.li  |    Created .
-  
-  Copyright (c) 2019 Quectel Wireless Solution, Co., Ltd. All Rights Reserved.
-  Quectel Wireless Solution Proprietary and Confidential.
--------------------------------------------------------------------------------------------------*/
 
 #ifndef __SV_DM_H__
 #define __SV_DM_H__
@@ -58,7 +38,6 @@ typedef void (*sv_dm_air_plane_mode_ind_cb)(SV_DM_AIR_PLANE_MODE_TYPE_E air_plan
 /*-----------------------------------------------------------------------------------------------*/
 int sv_dm_init(void);
 
-
 /*-----------------------------------------------------------------------------------------------*/
 /**
   @brief Denitialize DM service.
@@ -83,7 +62,6 @@ int sv_dm_deinit(void);
   */
 /*-----------------------------------------------------------------------------------------------*/
 int sv_dm_get_software_version(char *soft_ver, int soft_ver_len);
-
 
 /*-----------------------------------------------------------------------------------------------*/
 /** 
@@ -130,7 +108,6 @@ int sv_dm_set_modem_state_change_ind_cb(sv_dm_modem_state_ind_cb cb_func);
 /*-----------------------------------------------------------------------------------------------*/
 int sv_dm_set_modem_offline_reason_ind_cb(sv_dm_modem_offline_reason_ind_cb cb_func);
 
-
 /*-----------------------------------------------------------------------------------------------*/
 /** 
   @brief get module temperature.
@@ -173,7 +150,6 @@ int sv_dm_get_temperature_ex(int index,float *temperature);
   */
 /*-----------------------------------------------------------------------------------------------*/
 int sv_dm_get_device_serial_numbers(sv_dm_device_serial_numbers_info_t *p_info);
-
 
 /*-----------------------------------------------------------------------------------------------*/
 /** 
@@ -218,7 +194,6 @@ int sv_dm_get_radio_mode(SV_DM_RADIO_MODE_TYPE_E *p_info);
 /*-----------------------------------------------------------------------------------------------*/
 int sv_dm_get_air_plane_mode(SV_DM_AIR_PLANE_MODE_TYPE_E *p_info);
 
-
 /*-----------------------------------------------------------------------------------------------*/
 /** 
   @brief set air plane mode.
@@ -232,7 +207,6 @@ int sv_dm_get_air_plane_mode(SV_DM_AIR_PLANE_MODE_TYPE_E *p_info);
   */
 /*-----------------------------------------------------------------------------------------------*/
 int sv_dm_set_air_plane_mode(SV_DM_AIR_PLANE_MODE_TYPE_E air_plane_mode);
-
 
 /*-----------------------------------------------------------------------------------------------*/
 /** 
@@ -248,7 +222,6 @@ int sv_dm_set_air_plane_mode(SV_DM_AIR_PLANE_MODE_TYPE_E air_plane_mode);
 /*-----------------------------------------------------------------------------------------------*/
 int sv_dm_set_air_plane_mode_ind_cb(sv_dm_air_plane_mode_ind_cb cb_func);
 
-
 /*-----------------------------------------------------------------------------------------------*/
 /** 
   @brief get cpu occupancy.
@@ -263,7 +236,6 @@ int sv_dm_set_air_plane_mode_ind_cb(sv_dm_air_plane_mode_ind_cb cb_func);
 /*-----------------------------------------------------------------------------------------------*/
 int sv_dm_get_cpu_occupancy(float *cpu_occupancy);
 
-
 /*-----------------------------------------------------------------------------------------------*/
 /** 
   @brief get mem usage.
@@ -277,7 +249,6 @@ int sv_dm_get_cpu_occupancy(float *cpu_occupancy);
   */
 /*-----------------------------------------------------------------------------------------------*/
 int sv_dm_get_mem_usage(float *mem_use);
-
 
 /*-----------------------------------------------------------------------------------------------*/
 /** 
@@ -297,7 +268,6 @@ int sv_dm_get_mem_usage(float *mem_use);
 int sv_dm_get_nv_item_value(char *nv_item_name, unsigned char *nv_item_value, int nv_item_value_len, 
         int *nv_len);
 
-
 /*-----------------------------------------------------------------------------------------------*/
 /** 
   @brief set NV item value.
@@ -315,7 +285,6 @@ int sv_dm_get_nv_item_value(char *nv_item_name, unsigned char *nv_item_value, in
 /*-----------------------------------------------------------------------------------------------*/
 int sv_dm_set_nv_item_value(char *nv_item_name, unsigned char *nv_item_value, int nv_item_value_len, 
         int *nv_len);
-
 
 /*-----------------------------------------------------------------------------------------------*/
 /** 
@@ -564,7 +533,6 @@ int sv_dm_set_log_mask_clear(void);
 /*-----------------------------------------------------------------------------------------------*/
 int sv_dm_get_period_log_enable(int *enable, int *log_time, int *interval_time);
 
-
 /*-----------------------------------------------------------------------------------------------*/
 /**
   @brief set capture log periodically
@@ -620,7 +588,6 @@ int sv_dm_switch_antenna(SV_DM_ANTENNA_E antenna);
 #ifdef __cplusplus
 }
 #endif
-
 
 #endif
 
