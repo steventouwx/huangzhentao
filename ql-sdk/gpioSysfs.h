@@ -8,26 +8,6 @@
  * 修改记录:
  *******************************************/
 
-/*-----------------------------------------------------------------------------------------------*/
-/**
-  @file gpioSysfs.h
-  @brief gpio API
-*/
-/*-----------------------------------------------------------------------------------------------*/
-
-/*-------------------------------------------------------------------------------------------------
-  EDIT HISTORY
-  This section contains comments describing changes made to the file.
-  Notice that changes are listed in reverse chronological order.
-  $Header: $
-  when                     who                                          what, where, why
-  --------             ---                                            ----------------------------------------------------------
-  15/07/2016      Stanley.YONG  		   Create
-  26/07/2016      Stanley.YONG   		   Add interrupt implementation.
-  05/12/2019      larry.zhang		             Code  normalization
-  11/13/2020      larry.zhang                           Modify the code format
--------------------------------------------------------------------------------------------------*/
-
 #ifndef __GPIOSYSFS_H__
 #define __GPIOSYSFS_H__
 

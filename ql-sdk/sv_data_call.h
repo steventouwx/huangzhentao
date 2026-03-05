@@ -8,21 +8,6 @@
  * 修改记录:
  *******************************************/
 
-/**
- * @file sv_data_call.h
- * @brief Data service API
- *
- * @detailes
- * EDIT HISTORY
- * This section contains comments describing changes made to the file.
- * Notice that changes are listed in reverse chronological order.
- *
- * $Header: $
- * when      |what, where, why
- * ----------|---------------------------------------------------------
- * 20181024  |Created
- */
-
 #ifndef __SV_DATA_CALL_H__
 #define __SV_DATA_CALL_H__
 

@@ -8,24 +8,6 @@
  * 修改记录:
  *******************************************/
 
-/*-----------------------------------------------------------------------------------------------*/
-/**
-  @file sv_usb_switch.h 
-  @brief ql usb switch head file. 
-*/
-/*-----------------------------------------------------------------------------------------------*/
-
-/*-------------------------------------------------------------------------------------------------
-  EDIT HISTORY
-  This section contains comments describing changes made to the file.
-  Notice that changes are listed in reverse chronological order.
-  $Header: $
-  when       who          what, where, why
-  --------   ---          ----------------------------------------------------------
-  20240318   ethan.yao    Add usb enabled interface
-  20230424   qing.xu  Created .
--------------------------------------------------------------------------------------------------*/
-
 #ifndef __SV_USB_SWITCH_H__
 #define __SV_USB_SWITCH_H__
 

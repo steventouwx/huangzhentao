@@ -8,21 +8,6 @@
  * 修改记录:
  *******************************************/
 
-/**
- * @file sv_voice_common.h
- * @brief Voice service common define
- *
- * @detailes
- * EDIT HISTORY
- * This section contains comments describing changes made to the file.
- * Notice that changes are listed in reverse chronological order.
- *
- * $Header: $
- * when      |what, where, why
- * ----------|---------------------------------------------------------
- * 20250108  |Created
- */
-
 #ifndef __SV_VOICE_COMMON_H__
 #define __SV_VOICE_COMMON_H__
 

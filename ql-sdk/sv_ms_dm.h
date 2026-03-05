@@ -8,23 +8,6 @@
  * 修改记录:
  *******************************************/
 
-/*-----------------------------------------------------------------------------------------------*/
-/**
-  @file sv_ms_dm.h 
-  @brief device management service API, support Dual Sim Dual Active(DSDA).
-*/
-/*-----------------------------------------------------------------------------------------------*/
-
-/*-------------------------------------------------------------------------------------------------
-  EDIT HISTORY
-  This section contains comments describing changes made to the file.
-  Notice that changes are listed in reverse chronological order.
-  $Header: $
-  when       who          what, where, why
-  --------   ---          ----------------------------------------------------------
-  2021069   Stan.li       Created.
--------------------------------------------------------------------------------------------------*/
-
 #ifndef __SV_MS_DM_H__
 #define __SV_MS_DM_H__
 

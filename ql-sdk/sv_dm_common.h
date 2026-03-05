@@ -8,22 +8,6 @@
  * 修改记录:
  *******************************************/
 
-/*-----------------------------------------------------------------------------------------------*/
-/**
-  @file sv_dm_common.h 
-  @brief device management common define
-
-  @detailes
-  AG59x series module dm service.
-
-  @htmlonly
-  <span style="font-weight: bold">History</span>
-  @endhtmlonly
-  
-  when     |  who      |    what, where, why
-  -------- |  ---      |    ----------------------------------------------------------
--------------------------------------------------------------------------------------------------*/
-
 #ifndef __SV_DM_COMMON_H__
 #define __SV_DM_COMMON_H__
 

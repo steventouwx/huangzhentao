@@ -8,21 +8,6 @@
  * 修改记录:
  *******************************************/
 
-/**
- * @file sv_data_call_common.h
- * @brief Data service common define
- *
- * @detailes
- * EDIT HISTORY
- * This section contains comments describing changes made to the file.
- * Notice that changes are listed in reverse chronological order.
- *
- * $Header: $
- * when      |what, where, why
- * ----------|---------------------------------------------------------
- * 20241230  |Created
- */
-
 #ifndef __SV_DATA_CALL_COMMON_H__
 #define __SV_DATA_CALL_COMMON_H__
 #include <sys/socket.h>

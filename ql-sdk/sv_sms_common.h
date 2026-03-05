@@ -8,22 +8,6 @@
  * 修改记录:
  *******************************************/
 
-/**
- * @file sv_sms_common.h
- * @brief Sms service API.
- *
- * @details 
- * AG59x series module sim service. 
- *
- * @htmlonly 
- * <span style="font-weight: bold">History</span> 
- * @endhtmlonly
- *
- * when|who|why
- * ----------|--------------|-------------------------------------------
- * 
- */
-
 #ifndef __SV_SMS_COMMON_H__
 #define __SV_SMS_COMMON_H__
 

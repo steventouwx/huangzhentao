@@ -8,22 +8,6 @@
  * 修改记录:
  *******************************************/
 
-/*-----------------------------------------------------------------------------------------------*/
-/**
-  @file sv_nw.h 
-  @brief network registration API
-
-  @detailes
-  AG59x series module NW service.
-
-  @htmlonly
-  <span style="font-weight: bold">History</span>
-  @endhtmlonly
-
-  when     |  who        |  what, where, why
-  -------- |  ---        |  ----------------------------------------------------------
--------------------------------------------------------------------------------------------------*/
-
 #ifndef __SV_NW_COMMON_H__
 #define __SV_NW_COMMON_H__
 

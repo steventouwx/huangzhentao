@@ -8,23 +8,6 @@
  * 修改记录:
  *******************************************/
 
-/*-----------------------------------------------------------------------------------------------*/
-/**
-  @file sv_type.h 
-  @brief This is the public header file which defines data type 
-*/
-/*-----------------------------------------------------------------------------------------------*/
-
-/*-------------------------------------------------------------------------------------------------
-  EDIT HISTORY
-  This section contains comments describing changes made to the file.
-  Notice that changes are listed in reverse chronological order.
-  $Header: $
-  when       who          what, where, why
-  --------   ---          ----------------------------------------------------------
-  20181024   tyler.kuang  Created .
--------------------------------------------------------------------------------------------------*/
-
 #ifndef __SV_TYPE_H__
 #define __SV_TYPE_H__
 #include <stdint.h>

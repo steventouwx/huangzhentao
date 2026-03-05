@@ -8,23 +8,6 @@
  * 修改记录:
  *******************************************/
 
-/*-----------------------------------------------------------------------------------------------*/
-/**
-  @file sv_data_throughput.h 
-  @brief Data Throughput API 
-*/
-/*-----------------------------------------------------------------------------------------------*/
-
-/*-------------------------------------------------------------------------------------------------
-  EDIT HISTORY
-  This section contains comments describing changes made to the file.
-  Notice that changes are listed in reverse chronological order.
-  $Header: $
-  when       who          what, where, why
-  --------   ---          ----------------------------------------------------------
-  20240222   ewen.li      Add Data Throughput API
--------------------------------------------------------------------------------------------------*/
-
 #ifndef __SV_DATA_THROUGHPUT_H__
 #define __SV_DATA_THROUGHPUT_H__
 
