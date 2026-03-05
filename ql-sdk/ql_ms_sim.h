@@ -1,0 +1,433 @@
+/**
+ * @file ql_ms_sim.h
+ * @brief Sim service API.
+ *
+ * @details 
+ * module sim service. support Dual Sim Dual Active(DSDA). 
+ *
+ * @htmlonly 
+ * <span style="font-weight: bold">History</span> 
+ * @endhtmlonly
+ *
+ * when|who|why
+ * ----------|--------------|-------------------------------------------
+  2021069    |Stan.li       |Created.
+ *
+ * @copyright Copyright (c) 2019 Quectel Wireless Solution, Co., Ltd. All Rights Reserved.
+ * Quectel Wireless Solution Proprietary and Confidential.
+ * 
+ */
+#ifndef __QL_MS_SIM_H__
+#define __QL_MS_SIM_H__
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "ql_type.h"
+#include "ql_sim_common.h"
+
+/**
+ * sim status callback function
+ * @param[in] sim_id sim card id.
+ * @param[in] slot: sim slot number
+ * @param[in] p_info:sim info
+ * @return no value
+ */
+typedef void (*ql_ms_sim_card_status_cb_f)(int sim_id, ql_sim_card_info_t *p_info);
+
+/**
+ * sim card refresh callback function
+ * @param[in] sim_id sim card id.
+ * @param[in] slot: sim slot number
+ * @param[in] p_info:sim refresh info
+ * @return no value
+ */
+typedef void (*ql_ms_sim_card_refresh_cb_f)(int sim_id, ql_sim_refresh_info_t* p_info);
+
+/*-----------------------------------------------------------------------------------------------*/
+/**
+  @brief  Initializes SIM service.
+  @note You must call this function before other functions can be used in this module.
+  @return Whether the SIM service was intialized successfully.
+  @retval QL_ERR_OK successful.
+  @retval QL_ERR_SERVICE_NOT_READY service is not ready, need to retry.
+  @retval Other error code defined by ql_type.h.
+  */
+/*-----------------------------------------------------------------------------------------------*/
+int ql_ms_sim_init(void);
+
+/*-----------------------------------------------------------------------------------------------*/
+/**
+  @brief  Deinitializes SIM service.
+  @return Whether the SIM service was deintialized successfully.
+  @retval QL_ERR_OK successful.
+  @retval QL_ERR_SERVICE_NOT_READY service is not ready, need to retry.
+  @retval Other error code defined by ql_type.h.
+  */
+/*-----------------------------------------------------------------------------------------------*/
+int ql_ms_sim_deinit(void);
+
+/*-----------------------------------------------------------------------------------------------*/
+/**
+  @brief  Gets the IMSI (for 3GPP) or IMSI_M (for 3GPP2) from the SIM in ASCII form.
+  @param [in] sim_id sim_id to be used.
+  @param [in] app_type Application type.
+  @param [out] imsi Buffer to fill IMSI data.
+  @param [in] imsi_len Buffer length.
+  @return Whether the IMSI was successfully obtained.
+  @retval QL_ERR_OK successful.
+  @retval QL_ERR_SERVICE_NOT_READY service is not ready, need to retry.
+  @retval Other error code defined by ql_type.h.
+  */
+/*-----------------------------------------------------------------------------------------------*/
+int ql_ms_sim_get_imsi(int sim_id, QL_SIM_APP_TYPE_E app_type, char *imsi, int imsi_len);
+
+/*-----------------------------------------------------------------------------------------------*/
+/**
+  @brief  Retrieves the Integrated Circuit Card ID (ICCID) stored on the card.
+  @param [in] sim_id sim_id to be used.
+  @param [out] iccid Buffer to fill ICCID data.
+  @param [in] iccid_len Buffer length.
+  @return Whether the ICCID was successfully obtained.
+  @retval QL_ERR_OK successful.
+  @retval QL_ERR_SERVICE_NOT_READY service is not ready, need to retry.
+  @retval Other error code defined by ql_type.h.
+  */
+/*-----------------------------------------------------------------------------------------------*/
+int ql_ms_sim_get_iccid(int sim_id, char *iccid, int iccid_len);
+
+/*-----------------------------------------------------------------------------------------------*/
+/**
+  @brief  Retrieves the device phone number stored on the card.
+  @param [in] sim_id sim_id to be used.
+  @param [in] app_type Application type.
+  @param [out] phone_num Buffer to fill phone number.
+  @param [in] phone_num_len Buffer length.
+  @return Whether the phone number was successfully retrieved.
+  @retval QL_ERR_OK successful
+  @retval QL_ERR_SERVICE_NOT_READY service is not ready, need to retry
+  @retval Other error code defined by ql_type.h
+  */
+/*-----------------------------------------------------------------------------------------------*/
+int ql_ms_sim_get_phone_num(int sim_id, QL_SIM_APP_TYPE_E app_type, 
+                          char *phone_num, int phone_num_len);
+
+/*-----------------------------------------------------------------------------------------------*/
+/**
+  @brief  Retrieves the preferred operators stored on the card.
+  @param [in] sim_id sim_id to be used.
+  @param [in] list Buffer to hold operators
+  @note This function is only supported by 3GPP applications.
+  @return Whether the preferred operators were successfully retrieved.
+  @retval QL_ERR_OK successful
+  @retval QL_ERR_SERVICE_NOT_READY service is not ready, need to retry
+  @retval Other error code defined by ql_type.h
+  */
+/*-----------------------------------------------------------------------------------------------*/
+int ql_ms_sim_get_operators(int sim_id, ql_sim_operator_list_t *list);
+
+/*-----------------------------------------------------------------------------------------------*/
+/**
+  @brief  Enables the PIN on an application.
+  @param [in] sim_id sim_id to be used.
+  @param [in] app_type Application type.
+  @param [in] pin PIN to be used.
+  @param [in] pin_value PIN value. NULL terminated.
+  @return Whether the PIN was successfully enabled.
+  @retval QL_ERR_OK successful.
+  @retval QL_ERR_SERVICE_NOT_READY service is not ready, need to retry.
+  @retval Other error code defined by ql_type.h.
+  */
+/*-----------------------------------------------------------------------------------------------*/
+int ql_ms_sim_enable_pin(int sim_id, QL_SIM_APP_TYPE_E app_type, 
+                             QL_SIM_PIN_E pin, const char *pin_value);
+
+/*-----------------------------------------------------------------------------------------------*/
+/**
+  @brief  Disables the PIN on an application.
+  @param [in] sim_id sim_id to be used.
+  @param [in] app_type Application type.
+  @param [in] pin PIN to be used.
+  @param [in] pin_value PIN value. NULL terminated.
+  @return Whether the PIN was successfully disabled.
+  @retval QL_ERR_OK successful.
+  @retval QL_ERR_SERVICE_NOT_READY service is not ready, need to retry.
+  @retval Other error code defined by ql_type.h.
+  */
+/*-----------------------------------------------------------------------------------------------*/
+int ql_ms_sim_disable_pin(int sim_id, QL_SIM_APP_TYPE_E app_type, 
+                             QL_SIM_PIN_E pin, const char *pin_value);
+
+/*-----------------------------------------------------------------------------------------------*/
+/**
+  @brief  Verifies the PIN value of an application.
+  @param [in] sim_id sim_id to be used.
+  @param [in] app_type Application type.
+  @param [in] pin PIN to be used.
+  @param [in] pin_value PIN value. NULL terminated.
+  @note PIN must be enabled before calling this function.
+  @return Whether the PIN was successfully verified.
+  @retval QL_ERR_OK successful.
+  @retval QL_ERR_SERVICE_NOT_READY service is not ready, need to retry.
+  @retval Other error code defined by ql_type.h.
+  */
+/*-----------------------------------------------------------------------------------------------*/
+int ql_ms_sim_verify_pin(int sim_id, QL_SIM_APP_TYPE_E app_type, 
+                             QL_SIM_PIN_E pin, const char *pin_value);
+
+/*-----------------------------------------------------------------------------------------------*/
+/**
+  @brief  Changes the PIN value of an application.
+  @param [in] sim_id sim_id to be used.
+  @param [in] app_type Application type.
+  @param [in] pin PIN to be used.
+  @param [in] old_pin_value Old PIN value. NULL terminated.
+  @param [in] new_pin_value New PIN value. NULL terminated.
+  @return Whether the PIN was successfully changed.
+  @retval QL_ERR_OK successful.
+  @retval QL_ERR_SERVICE_NOT_READY service is not ready, need to retry.
+  @retval Other error code defined by ql_type.h.
+  */
+/*-----------------------------------------------------------------------------------------------*/
+int ql_ms_sim_change_pin(int sim_id, QL_SIM_APP_TYPE_E app_type, 
+                             QL_SIM_PIN_E pin, const char *old_pin_value, const char *new_pin_value);
+
+/*-----------------------------------------------------------------------------------------------*/
+/**
+  @brief  Unblocks a blocked PIN using the PUK code.
+  @param [in] sim_id sim_id to be used.
+  @param [in] app_type Application type.
+  @param [in] pin PIN to be used.
+  @param [in] puk_value PUK value.  NULL terminated.
+  @param [in] pin_value New PIN value.  NULL terminated.
+  @note The user must pass PUK1 to unblock PIN1 or PUK2 to unblock PIN2.
+  @return Whether the PIN was successfully unblocked.
+  @retval QL_ERR_OK successful.
+  @retval QL_ERR_SERVICE_NOT_READY service is not ready, need to retry.
+  @retval Other error code defined by ql_type.h.
+  */
+/*-----------------------------------------------------------------------------------------------*/
+int ql_ms_sim_unblock_pin(int sim_id, QL_SIM_APP_TYPE_E app_type, 
+                             QL_SIM_PIN_E pin, const char *puk_value, const char *pin_value);
+
+/*-----------------------------------------------------------------------------------------------*/
+/**
+  @brief  Retrieves the card info stored on a card.
+  @param [in] sim_id sim_id to be used.
+  @param [out] p_info Pointer of ql_ms_sim_card_info_t.
+  @return Whether the card info was successfully retrieved.
+  @retval QL_ERR_OK successful.
+  @retval QL_ERR_SERVICE_NOT_READY service is not ready, need to retry.
+  @retval Other error code defined by ql_type.h.
+  */
+/*-----------------------------------------------------------------------------------------------*/
+int ql_ms_sim_get_card_info(int sim_id, ql_sim_card_info_t *p_info);
+
+/*-----------------------------------------------------------------------------------------------*/
+/**
+  @brief  Reads data from a specific file on a specified application on the card.
+  @param [in] sim_id sim_id to be used.
+  @param [in] app_type Application type.
+  @param [inout] p_file Pointer of ql_ms_sim_file_t.
+  @return Whether the file was successfully read.
+  @retval QL_ERR_OK successful.
+  @retval QL_ERR_SERVICE_NOT_READY service is not ready, need to retry.
+  @retval Other error code defined by ql_type.h.
+  */
+/*-----------------------------------------------------------------------------------------------*/
+int ql_ms_sim_read_file(int sim_id, QL_SIM_APP_TYPE_E app_type, ql_sim_file_t *p_file);
+
+/*-----------------------------------------------------------------------------------------------*/
+/**
+  @brief  Writes data to a specific file on a specified application on the card. 
+  @param [in] sim_id sim_id to be used.
+  @param [in] app_type Application type.
+  @param [in] p_file Pointer of ql_ms_sim_file_t
+  @note The type of file is determined by the record number field,
+    which indicates a transparent file when zero and a record-based file otherwise.
+  @return Whether the file was successfully written.
+  @retval QL_ERR_OK successful.
+  @retval QL_ERR_SERVICE_NOT_READY service is not ready, need to retry.
+  @retval Other error code defined by ql_type.h.
+  */
+/*-----------------------------------------------------------------------------------------------*/
+int ql_ms_sim_write_file(int sim_id, QL_SIM_APP_TYPE_E app_type, ql_sim_file_t *p_file);
+
+/*-----------------------------------------------------------------------------------------------*/
+/**
+  @brief  Retrieves the info of a specific file on a specified application on the card.
+  @param [in] sim_id sim_id to be used.
+  @param [in] app_type Application type.
+  @param [inout] p_info Pointer of ql_ms_sim_file_info_t.
+  @return Whether the file info was successfully retrieved.
+  @retval QL_ERR_OK successful.
+  @retval QL_ERR_SERVICE_NOT_READY service is not ready, need to retry.
+  @retval Other error code defined by ql_type.h.
+  */
+/*-----------------------------------------------------------------------------------------------*/
+int ql_ms_sim_get_file_info(int sim_id, QL_SIM_APP_TYPE_E app_type, 
+                                 ql_sim_file_info_t *p_info);
+
+/*-----------------------------------------------------------------------------------------------*/
+/**
+  @brief  Reads phone book on a specified application on the card.
+  @param [in] sim_id sim_id to be used.
+  @param [in] app_type Spplication type.
+  @param [in] pb_path Phone book path. NULL terminated.
+  @param [in] record_idx Record index to read. Starts from 1.
+  @param [out] p_record Pointer of ql_ms_sim_phone_book_record_t.
+  @return Whether the phone book record was successfully retrieved.
+  @retval QL_ERR_OK successful.
+  @retval QL_ERR_SERVICE_NOT_READY service is not ready, need to retry.
+  @retval Other error code defined by ql_type.h.
+  */
+/*-----------------------------------------------------------------------------------------------*/
+int ql_ms_sim_read_phone_book(int sim_id, QL_SIM_APP_TYPE_E app_type,
+                                    const char *pb_path, uint8_t record_idx,
+                                    ql_sim_phone_book_record_t *p_record);
+
+/*-----------------------------------------------------------------------------------------------*/
+/**
+  @brief  Writes phone book on a specified application on the card.
+  @param [in] sim_id sim_id to be used.
+  @param [in] app_type Application type.
+  @param [in] pb_path Phone book path. NULL terminated.
+  @param [in] record_idx Record index to write. Starts from 1.
+  @param [in] p_record Pointer of ql_ms_sim_phone_book_record_t.
+  @note If p_record->name[0] = 0 and p_record->number[0] = 0, record will be deleted.
+  @return Whether the phone book record was successfully saved.
+  @retval QL_ERR_OK successful.
+  @retval QL_ERR_SERVICE_NOT_READY service is not ready, need to retry.
+  @retval Other error code defined by ql_type.h.
+  */
+/*-----------------------------------------------------------------------------------------------*/
+int ql_ms_sim_write_phone_book(int sim_id, QL_SIM_APP_TYPE_E app_type, 
+                                    const char *pb_path, uint8_t record_idx,
+                                    ql_sim_phone_book_record_t *p_record);
+
+/*-----------------------------------------------------------------------------------------------*/
+/**
+  @brief  Opens a logical channel on a UICC card.
+  @param [in] sim_id sim_id to be used.
+  @param [out] channel_id Channel opened.
+  @return Whether the logical channel was successfully opened.
+  @retval QL_ERR_OK successful.
+  @retval QL_ERR_SERVICE_NOT_READY service is not ready, need to retry.
+  @retval Other error code defined by ql_type.h.
+  */
+/*-----------------------------------------------------------------------------------------------*/
+int ql_ms_sim_open_logical_channel(int sim_id, uint8_t *channel_id);
+
+/*-----------------------------------------------------------------------------------------------*/
+/**
+  @brief  Closes a logical channel on a UICC card.
+  @param [in] sim_id sim_id to be used.
+  @param [in] channel_id Channel to be closed.
+  @return Whether the logical channel was successfully closed.
+  @retval QL_ERR_OK successful.
+  @retval QL_ERR_SERVICE_NOT_READY service is not ready, need to retry.
+  @retval Other error code defined by ql_type.h.
+  */
+/*-----------------------------------------------------------------------------------------------*/
+int ql_ms_sim_close_logical_channel(int sim_id, uint8_t channel_id);
+
+/*-----------------------------------------------------------------------------------------------*/
+/**
+  @brief  Sends an APDU to the card.
+  @param [in] sim_id sim_id to be used.
+  @param [in] channel_id Channel to be used.
+  @param [inout] p_apdu Pointer of ql_ms_sim_apdu_t.
+  @note You must call ql_ms_sim_open_logical_channel before sending an APDU.
+  @return Whether the APDU was successfully sent.
+  @retval QL_ERR_OK successful.
+  @retval QL_ERR_SERVICE_NOT_READY service is not ready, need to retry.
+  @retval Other error code defined by ql_type.h.
+  */
+/*-----------------------------------------------------------------------------------------------*/
+int ql_ms_sim_send_apdu(int sim_id, uint8_t channel_id, ql_sim_apdu_t *p_apdu);
+
+/*-----------------------------------------------------------------------------------------------*/
+/** 
+  @brief  Sets SIM card status callback handler
+  @param [in] sim_id sim_id to be used.
+  @param[in] cb call back handler.
+  @return Whether the card status callback handler was successfully set.
+  @retval QL_ERR_OK successful.
+  @retval QL_ERR_SERVICE_NOT_READY service is not ready, need to retry.
+  @retval Other error code defined by ql_type.h.
+  */
+/*-----------------------------------------------------------------------------------------------*/
+int ql_ms_sim_set_card_status_cb(int sim_id, ql_ms_sim_card_status_cb_f cb);
+
+/*-----------------------------------------------------------------------------------------------*/
+/**
+  @brief  Sets SIM card refresh callback handler
+  @param [in] sim_id sim_id to be used.
+  @param[in] cb call back handler.
+  @return Whether the card status callback handler was successfully set.
+  @retval QL_ERR_OK successful.
+  @retval QL_ERR_SERVICE_NOT_READY service is not ready, need to retry.
+  @retval Other error code defined by ql_type.h.
+  */
+/*-----------------------------------------------------------------------------------------------*/
+int ql_ms_sim_set_card_refresh_cb(int sim_id, ql_ms_sim_card_refresh_cb_f cb);
+
+/*-----------------------------------------------------------------------------------------------*/
+/**
+  @brief Set slot active or inactive.
+  @param [In] slot Slot to be used.
+  @param [In] active Active or inactive slot.
+  @return Whether the SIM was successfully set active or inactive.
+  @retval QL_ERR_OK successful.
+  @retval QL_ERR_SERVICE_NOT_READY service is not ready, need to retry.
+  @retval Other error code defined by ql_type.h.
+  */
+/*-----------------------------------------------------------------------------------------------*/
+int ql_ms_sim_set_sim_slot_active(QL_SIM_SLOT_E slot, uint8_t active);
+
+/*-----------------------------------------------------------------------------------------------*/
+/**
+  @brief Get slot active or inactive.
+  @param [In] slot Slot to be used.
+  @param [Out] active Active or inactive slot.
+  @return Whether the SIM was successfully set active or inactive.
+  @retval QL_ERR_OK successful.
+  @retval QL_ERR_SERVICE_NOT_READY service is not ready, need to retry.
+  @retval Other error code defined by ql_type.h.
+  */
+/*-----------------------------------------------------------------------------------------------*/
+int ql_ms_sim_get_sim_slot_active(QL_SIM_SLOT_E slot, uint8_t *p_active);
+/*-----------------------------------------------------------------------------------------------*/
+/**
+  @brief  Registration server error callback. Currently, only if the server exits abnormally, 
+  the callback function will be executed, and the error code is QL_ERR_ABORTED;
+  @param[in] cb  Callback function 
+  @return
+  QL_ERR_OK - successful
+  Other - error code defined by ql_type.h
+  */
+/*-----------------------------------------------------------------------------------------------*/
+int ql_ms_sim_set_service_error_cb(ql_sim_service_error_cb_f cb);
+
+/*-----------------------------------------------------------------------------------------------*/
+/**
+  @brief  Retrieves the EID stored on the card.
+  @param [in] sim_id sim_id to be used.
+  @param [out] eid Buffer to fill EID data.
+  @param [in] eid_len Buffer length.
+  @return Whether the EID was successfully obtained.
+  @retval QL_ERR_OK successful.
+  @retval QL_ERR_SERVICE_NOT_READY service is not ready, need to retry.
+  @retval Other error code defined by ql_type.h.
+  */
+/*-----------------------------------------------------------------------------------------------*/
+int ql_ms_sim_get_eid(int sim_id, char *eid, int eid_len);
+
+#ifdef __cplusplus
+}
+#endif
+
+
+#endif
+

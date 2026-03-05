@@ -1,0 +1,349 @@
+/**
+ * @file ql_sim_common.h
+ * @brief Sim service common define
+ *
+ * @details 
+ * module sim service. 
+ *
+ * @htmlonly 
+ * <span style="font-weight: bold">History</span> 
+ * @endhtmlonly
+ *
+ * when|who|why
+ * ----------|--------------|-------------------------------------------
+  20230605   |stan.li       |Created .
+ *
+ * @copyright Copyright (c) 2023 Quectel Wireless Solution, Co., Ltd. All Rights Reserved.
+ * Quectel Wireless Solution Proprietary and Confidential.
+ * 
+ */
+
+
+#ifndef __QL_SIM_COMMON_H__
+#define __QL_SIM_COMMON_H__
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include <stdint.h>
+
+#define QL_SIM_IMSI_LENGTH      16      /**<  Maximum length of IMSI data. */
+#define QL_SIM_ICCID_LENGTH     20      /**<  Maximum length of ICCID data. */
+#define QL_SIM_NUM_OPERATOR_MAX 24      /**<  Maximum number of operators */
+#define QL_SIM_PATH_MAX         20      /**<  Maximum length of a full file path in ASCII format. */
+#define QL_SIM_DATA_MAX         4096    /**<  Maximum size of data to be read/written. */
+#define QL_SIM_PIN_MAX          8       /**<  Maximum length of PIN data. */
+#define QL_SIM_MAX_NUM_CARDS    2       /**<  Maximum number of cards. */
+#define QL_SIM_PHONE_NUMBER_MAX 82      /**<  Maximum phone number length. */
+#define QL_SIM_MCC_LENGHT       3       /**<  Length of the MCC. */
+#define QL_SIM_MNC_MAX          3       /**<  Maximum length of the MNC. */
+
+#define QL_SIM_MAX_REFRESH_FILES    35   /**  Maximum number of refresh files. */
+#define QL_SIM_CHAR_PATH_MAX        20   /**  Maximum length of a full file path in ASCII format. */
+
+#define QL_SIM_PHONE_BOOK_NAME_MAX      15  /**<  Maximum length of phone book user name. */
+#define QL_SIM_PHONE_BOOK_NUMBER_MAX    21  /**<  Maximum length of phone book number. */
+
+#define QL_SIM_APDU_DATA_MAX    1024  /**<  Maximum number of APDU data. */
+
+#define QL_SIM_PB_DEFAULT_PATH   "3F007F106F3A"   /**< Default phone book path. */
+#define QL_SIM_EID_LENGTH       32      /**<  Maximum length of EID data. */
+
+/** Ligcial slot */
+/**> Currently only one active slot is supported, so slot should be always QL_SIM_SLOT_1.*/
+typedef enum 
+{
+    QL_SIM_SLOT_INVALID = 0x000, /**< Invalid slot.  */   
+    QL_SIM_SLOT_1       = 0xB01, /**< Identify card in  slot 1.  */
+    QL_SIM_SLOT_2       = 0xB02, /**< Identify card in slot 2.  */
+} QL_SIM_SLOT_E;
+
+/**Enum Physical slot */
+typedef enum 
+{
+    QL_SIM_PHY_SLOT_INVALID = 0x000, /**< Invalid slot.  */   
+    QL_SIM_PHY_SLOT_1       = 0xB01, /**< Identify card in slot 1.  */
+    QL_SIM_PHY_SLOT_2       = 0xB02, /**< Identify card in slot 2.  */
+} QL_SIM_PHY_SLOT_E;
+
+/**Enum SIM PIN */
+typedef enum 
+{
+    QL_SIM_PIN_1 = 0xB01, /**< Level 1 user verification.  */
+    QL_SIM_PIN_2 = 0xB02, /**< Level 2 user verification.  */
+} QL_SIM_PIN_E;
+
+
+/** Enum Application Type */
+typedef enum
+{
+    QL_SIM_APP_TYPE_UNKNOWN = 0xB00, /**<  Unknown application type  */
+    QL_SIM_APP_TYPE_3GPP    = 0xB01, /**< Identify the SIM/USIM application on the card.  */
+    QL_SIM_APP_TYPE_3GPP2   = 0xB02, /**< Identify the RUIM/CSIM application on the card.  */
+    QL_SIM_APP_TYPE_ISIM    = 0xB03, /**< Identify the ISIM application on the card.  */
+} QL_SIM_APP_TYPE_E;
+
+/** Enum Sim operator */
+typedef struct 
+{
+    char mcc[QL_SIM_MCC_LENGHT];    /**< MCC value in ASCII characters.*/
+    uint8_t mnc_len;                /**< The number of elements in the MNC, 2 or 3. */
+    char mnc[QL_SIM_MNC_MAX];       /**< MNC value in ASCII characters.*/
+} ql_sim_operator_t;
+
+/** Multi Sim operator structure*/
+typedef struct 
+{
+    int len;    /**< Length of actual operators */
+    ql_sim_operator_t operators[QL_SIM_NUM_OPERATOR_MAX];
+} ql_sim_operator_list_t;
+
+/** Enum Sim Card state */
+typedef enum {
+    /** Card state unknown. */
+    QL_SIM_CARD_STATE_UNKNOWN                       = 0xB01,
+    /** Card is absent. */
+    QL_SIM_CARD_STATE_ABSENT                        = 0xB02,  
+    /** Card is present. */
+    QL_SIM_CARD_STATE_PRESENT                       = 0xB03,
+    /** Unknown error state. */
+    QL_SIM_CARD_STATE_ERROR_UNKNOWN                 = 0xB04,
+    /** Power down. */
+    QL_SIM_CARD_STATE_ERROR_POWER_DOWN              = 0xB05,
+    /** Poll error. */
+    QL_SIM_CARD_STATE_ERROR_POLL_ERROR              = 0xB06,  
+    /**  Failed to receive an answer to reset.  */
+    QL_SIM_CARD_STATE_ERROR_NO_ATR_RECEIVED         = 0xB07, 
+    /** Voltage mismatch. */
+    QL_SIM_CARD_STATE_ERROR_VOLT_MISMATCH           = 0xB08, 
+    /** Parity error. */
+    QL_SIM_CARD_STATE_ERROR_PARITY_ERROR            = 0xB09,    
+    /** Card returned technical problems. */
+    QL_SIM_CARD_STATE_ERROR_SIM_TECHNICAL_PROBLEMS  = 0xB0A,  
+} QL_SIM_CARD_STATE_E;  /**< Card state. */
+
+/** Enum Sim Subscription */
+typedef enum {
+    QL_SIM_SUBSCRIPTION_NONE    = 0xB00, /**<  Nonprovisioning.  */
+    QL_SIM_SUBSCRIPTION_PRI     = 0xB01, /**<  Primary provisioning subscription.  */
+    QL_SIM_SUBSCRIPTION_SEC     = 0xB02, /**<  Secondary provisioning subscription.  */
+} QL_SIM_SUBSCRIPTION_E;
+
+/** Enum Sim type */
+typedef enum
+{
+    QL_SIM_CARD_TYPE_UNKNOWN    = 0xB00, /**<  Unidentified card type.  */
+    QL_SIM_CARD_TYPE_ICC        = 0xB01, /**<  Card of SIM or RUIM type.  */
+    QL_SIM_CARD_TYPE_UICC       = 0xB02, /**<  Card of USIM or CSIM type.  */
+} QL_SIM_CARD_TYPE_E;
+
+/** Enum Sim app state */
+typedef enum {
+    QL_SIM_APP_STATE_UNKNOWN                    = 0xB00, /**<  Application state unknown. */
+    QL_SIM_APP_STATE_DETECTED                   = 0xB01, /**<  Detected state.  */
+    QL_SIM_APP_STATE_PIN1_REQ                   = 0xB02, /**<  PIN1 required.  */
+    QL_SIM_APP_STATE_PUK1_REQ                   = 0xB03, /**<  PUK1 required.  */
+    QL_SIM_APP_STATE_INITALIZATING              = 0xB04, /**<  Initializing.  */
+    QL_SIM_APP_STATE_PERSO_CK_REQ               = 0xB05, /**<  Personalization control key required.  */
+    QL_SIM_APP_STATE_PERSO_PUK_REQ              = 0xB06, /**<  Personalization unblock key required.  */
+    QL_SIM_APP_STATE_PERSO_PERMANENTLY_BLOCKED  = 0xB07, /**<  Personalization is permanently blocked.  */
+    QL_SIM_APP_STATE_PIN1_PERM_BLOCKED          = 0xB08, /**<  PIN1 is permanently blocked.  */
+    QL_SIM_APP_STATE_ILLEGAL                    = 0xB09, /**<  Illegal application state.  */
+    QL_SIM_APP_STATE_READY                      = 0xB0A, /**<  Application ready state. */
+} QL_SIM_APP_STATE_E;
+
+/** Enum Personalization function */
+typedef enum {
+    /**  Unknown personalization feature.  */
+    QL_SIM_PERSO_FEATURE_UNKNOWN                = 0xB00,
+    /**  Featurization based on 3GPP MCC and MNC.  */
+    QL_SIM_PERSO_FEATURE_3GPP_NETWORK           = 0xB01, 
+    /**  Featurization based on 3GPP MCC, MNC, and IMSI digits 6 and 7.  */
+    QL_SIM_PERSO_FEATURE_3GPP_NETWORK_SUBSET    = 0xB02, 
+    /**  Featurization based on 3GPP MCC, MNC, and GID1.  */
+    QL_SIM_PERSO_FEATURE_3GPP_SERVICE_PROVIDER  = 0xB03,
+    /**  Featurization based on 3GPP MCC, MNC, GID1, and GID2.  */
+    QL_SIM_PERSO_FEATURE_3GPP_CORPORATE         = 0xB04, 
+    /**  Featurization based on the 3GPP IMSI.  */
+    QL_SIM_PERSO_FEATURE_3GPP_SIM               = 0xB05, 
+    /**  Featurization based on 3GPP2 MCC and MNC.  */
+    QL_SIM_PERSO_FEATURE_3GPP2_NETWORK_TYPE_1   = 0xB06, 
+    /**  Featurization based on 3GPP2 IRM code.  */
+    QL_SIM_PERSO_FEATURE_3GPP2_NETWORK_TYPE_2   = 0xB07, 
+    /**  Featurization based on 3GPP2 IMSI_M.  */
+    QL_SIM_PERSO_FEATURE_3GPP2_RUIM             = 0xB08, 
+} QL_SIM_PERSO_FEATURE_E;
+
+/** Enum The PIN state  */
+typedef enum {
+    /** Unknown PIN state. */
+    QL_SIM_PIN_STATE_UNKNOWN                = 0xB01, 
+    /**  PIN required, but has not been verified.  */
+    QL_SIM_PIN_STATE_ENABLED_NOT_VERIFIED   = 0xB02, 
+    /**  PIN required and has been verified.  */
+    QL_SIM_PIN_STATE_ENABLED_VERIFIED       = 0xB03, 
+    /**  PIN not required.  */
+    QL_SIM_PIN_STATE_DISABLED               = 0xB04, 
+    /**  PIN verification has failed too many times and is blocked. Recoverable through PUK verification.  */
+    QL_SIM_PIN_STATE_BLOCKED                = 0xB05, 
+    /**  PUK verification has failed too many times and is not recoverable.  */
+    QL_SIM_PIN_STATE_PERMANENTLY_BLOCKED    = 0xB06, 
+ } QL_SIM_PIN_STATE_E;
+
+/** Sim app info structure  */
+typedef struct {
+    /**   Type of subscription (i.e., primary, secondary, etc.). */
+    QL_SIM_SUBSCRIPTION_E subscription;
+    /**   Current state of the application. */
+    QL_SIM_APP_STATE_E app_state;
+    /**   Current personalization state and feature enabled. */
+    QL_SIM_PERSO_FEATURE_E perso_feature;
+    /**   Number of personalization retries. */
+    uint8_t perso_retries;
+    /**   Number of personalization unblock retries. */
+    uint8_t perso_unblock_retries;
+    /**   Current PIN 1 state. */
+    QL_SIM_PIN_STATE_E pin1_state;
+    /**   Number of PIN 1 retries. */
+    uint8_t pin1_num_retries;
+    /**   Number of PUK 1 retries. */
+    uint8_t puk1_num_retries;
+    /**   Current PIN 2 state. */
+    QL_SIM_PIN_STATE_E pin2_state;
+    /**   Number of PIN 2 retries. */
+    uint8_t pin2_num_retries; 
+    /**   Number of PUK 2 retries. */
+    uint8_t puk2_num_retries;
+}ql_sim_app_info_t;  /* Type */
+
+/** Sim card info structure  */
+typedef struct
+{
+    QL_SIM_CARD_STATE_E state;      /**<   Sim Card State. */
+    QL_SIM_CARD_TYPE_E type;        /**<   Sim Card Type. */
+    ql_sim_app_info_t app_3gpp;     /**<   Stores 3GPP application information. */
+    ql_sim_app_info_t app_3gpp2;    /**<   Stores 3GPP2 application information. */
+    ql_sim_app_info_t app_isim;     /**<   Stores ISIM application information. */
+} ql_sim_card_info_t;
+
+
+typedef enum {
+    QL_SIM_REFRESH_RESET              = 0xB01,  /**< Refresh reset. */
+    QL_SIM_REFRESH_NAA_INIT           = 0xB02,  /**< Refresh NAA initialization. */
+    QL_SIM_REFRESH_NAA_FCN            = 0xB03,  /**< Refresh NAA file change notification. */
+    QL_SIM_REFRESH_NAA_INIT_FCN       = 0xB04,  /**< Refresh NAA initalization and file change notification. */
+    QL_SIM_REFRESH_NAA_INIT_FULL_FCN  = 0xB05,  /**< Refresh NAA initalization and full file change notification. */
+    QL_SIM_REFRESH_NAA_APP_RESET      = 0xB06,  /**< Refresh NAA application reset. */
+    QL_SIM_REFRESH_3G_SESSION_RESET   = 0xB07,  /**< Refresh 3G session reset. */
+}QL_SIM_REFRESH_MODE_E;  /**< SIM refresh modes. */
+
+typedef struct {
+
+    uint32_t path_value_len;                /**< Must be set to the number of elements in path_value. */
+    char path_value[QL_SIM_CHAR_PATH_MAX];  /**< Path value. */
+}ql_sim_refresh_file_list_t;  /* Type */
+
+typedef struct
+{
+    /**< Indicates the slot to be used. Valid values: \n
+      - 1 -- Slot 1
+      - 2 -- Slot 2 @tablebulletend
+    */
+    QL_SIM_SLOT_E slot_id;
+    /**< Indicates the type of the application. Valid values: \n
+      - 0 -- Unknown
+      - 1 -- 3GPP application
+      - 2 -- 3GPP2 application
+      - 3 -- ISIM application
+      Other values are reserved for the future and are to be handled as Unknown.
+    */
+    QL_SIM_APP_TYPE_E app_type;
+    /*  Refresh Mode */
+    QL_SIM_REFRESH_MODE_E refresh_mode;
+    
+    /*  Refresh File Data */
+    uint32_t refresh_files_len;  /**< Must be set to the number of elements in refresh_files. */
+    ql_sim_refresh_file_list_t refresh_files[QL_SIM_MAX_REFRESH_FILES];    /**< Refresh file data. */
+} ql_sim_refresh_info_t;
+
+
+/** Sim file structure  */
+typedef struct {
+    uint32_t path_len;          /**< Must be set to the number of elements in the path. */
+    char path[QL_SIM_PATH_MAX]; /**< File path in ASCII characters. */
+    /** Offset is only required for write transparent file access where data length is indicated.*/
+    uint16_t offset; 
+    /** Index of records involved in file access. A record index of 0 indicates transparent file access.*/
+    uint8_t record_idx;
+
+    /* == filled by caller when writing file == */
+    uint32_t data_len;  /**< When reading file, it's the length of file data been read.
+                             When writing file, it's the length of file data to be written. */
+    uint8_t data[QL_SIM_DATA_MAX];
+} ql_sim_file_t;  /* Type */
+
+/** Sim File type */
+typedef enum {
+    QL_SIM_FILE_TYPE_UNKNOWN        = 0xB00, /**<  Unknown file type  */
+    QL_SIM_FILE_TYPE_TRANSPARENT    = 0xB01, /**< File structure consisting of a sequence of bytes.  */
+    QL_SIM_FILE_TYPE_CYCLIC         = 0xB02, /**< File structure consisting of a sequence of records,
+                                                  each containing the same fixed size in 
+                                                  chronological order.Once all the records have been
+                                                  used, the oldest data is overwritten.  */
+    QL_SIM_FILE_TYPE_LINEAR_FIXED   = 0xB03, /**< File structure consisting of a sequence of records, 
+                                                  each containing the same fixed size.  */
+} QL_SIM_FILE_TYPE_E;
+
+/** Sim file info structure  */
+typedef struct {
+    /* == filled by caller == */
+    uint32_t path_len;          /**< Must be set to the number of elements in the path. */
+    char path[QL_SIM_PATH_MAX]; /**< File path in ASCII characters. */
+
+    /* == filled by callee == */
+    QL_SIM_FILE_TYPE_E file_type;   /**<   File type */
+    uint16_t file_size;             /**<   Size of transparent files.*/
+    uint16_t record_size;           /**<   Size of each cyclic or linear fixed file record.*/
+    uint16_t record_count;          /**<   Number of cyclic or linear fixed file records.*/
+} ql_sim_file_info_t;  /* Type */
+
+/** Sim phone book info structure  */
+typedef struct 
+{
+    /** User name. Null-terminated */
+    char name[QL_SIM_PHONE_BOOK_NAME_MAX];   
+    /** Phone number, a '+' can also be preappended to the number. Null-terminated. */
+    char number[QL_SIM_PHONE_BOOK_NUMBER_MAX]; 
+} ql_sim_phone_book_record_t;
+
+/** Sim APDU data structure  */
+typedef struct
+{
+    uint32_t req_apdu_len;                      /**< Request APDU data length. */
+    uint8_t req_apdu[QL_SIM_APDU_DATA_MAX];     /**< Request APDU data. */
+
+    uint32_t resp_apdu_len;                     /**< Response APDU data length. */
+    uint8_t resp_apdu[QL_SIM_APDU_DATA_MAX];    /**< Response APDU data. */
+} ql_sim_apdu_t;
+
+/** Indicates the slot number of the active SIM card structure */
+typedef struct 
+{
+    int active_slots_len;  /**< Number of physical card slots */
+    QL_SIM_PHY_SLOT_E active_slots[QL_SIM_MAX_NUM_CARDS]; /**< Id of the active SIM card slot */
+} ql_sim_active_slots_t;
+
+/**
+ * sim service error callback function
+ * @param[in] error: Error number. See QL type.h for details.
+ * @return no value
+ */
+typedef void (*ql_sim_service_error_cb_f)(int error);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif  /* __QL_SIM_COMMON_H__ */
+
