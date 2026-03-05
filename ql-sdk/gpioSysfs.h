@@ -1,3 +1,13 @@
+/*******************************************
+ * Copyright (c) 2026，德赛西威汽车电子有限公司
+ * All rights reserved
+ * 文件名: gpioSysfs.h
+ * 编写者: AutoAgent
+ * 编写日期: 2026-03-05
+ * 简要描述: 定义gpioSysfs相关接口、数据结构及功能能力。
+ * 修改记录:
+ *******************************************/
+
 /*-----------------------------------------------------------------------------------------------*/
 /**
   @file gpioSysfs.h
@@ -38,7 +48,7 @@ extern "C" {
 #include <string.h>
 #include <sys/mman.h>
 #include <unistd.h>
-#include "ql_gpio.h"
+#include "sv_gpio.h"
 #include <errno.h>
 
 #define off64_t long long
