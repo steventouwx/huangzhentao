@@ -1,0 +1,38 @@
+bootstrap_go_package {
+    name: "soong-libtrm-mediatek",
+    pkgPath: "android/soong/libtrm_build/mediatek",
+    deps: [
+        "soong-android",
+        "soong-cc",
+        "soong-android-mediatek",
+    ],
+    srcs: [
+        "libtrm_build.go",
+    ],
+    pluginFor: ["soong_build"],
+}
+
+libtrm_build {
+    name: "libtrm_build",
+}
+
+cc_library_shared {
+	defaults: ["libtrm_build"],
+    name: "libtrm",
+    srcs: [
+        "src/libtrm.c",
+    ],
+    header_libs: [
+        "libMtkLogHeaders",
+        "libMtkPropHeaders",
+        "libtrm_includes",
+    ],
+    shared_libs: [
+        "libmtkrillog",
+        "libmtkproperty",
+    ],
+    export_header_lib_headers: ["libtrm_includes"],
+    compile_multilib: "both",
+    proprietary: true,
+    owner: "mtk",
+}

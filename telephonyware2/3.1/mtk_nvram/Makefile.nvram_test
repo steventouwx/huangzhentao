@@ -1,0 +1,29 @@
+# SPDX-License-Identifier:MediaTekProprietary
+NAME = nvram_test
+SRC := $(NAME)_src
+OBJ := $(NAME)_src
+
+INCLUDES=-Ilibnvram -Ilibfile_op
+LIBS=$(TARGET_LDFLAGS) -L. -lnvram -lfile_op -lubox
+
+SOURCES_C := $(wildcard $(SRC)/*.c)
+OBJECTS_C := $(patsubst $(SRC)/%.c, $(OBJ)/%.o, $(SOURCES_C))
+
+SOURCES_CPP := $(wildcard $(SRC)/*.cpp)
+OBJECTS_CPP := $(patsubst $(SRC)/%.cpp, $(OBJ)/%.o, $(SOURCES_CPP))
+
+SOURCES := $(SOURCES_C) $(SOURCES_CPP)
+OBJECTS := $(OBJECTS_C) $(OBJECTS_CPP) 
+
+$(NAME): $(OBJECTS) 
+	$(CC) -fPIC $(INCLUDES) -o $@ $^ $(LIBS)
+    
+$(OBJ)/%.o: $(SRC)/%.c
+	${CC} $(CFLAGS) -fPIC -c $< -o $@ $(INCLUDES)
+
+$(OBJ)/%.o: $(SRC)/%.cpp
+	${CXX} $(CXXFLAGS) -fPIC -c $< -o $@ $(INCLUDES)
+
+clean:
+	rm -f $(NAME)
+

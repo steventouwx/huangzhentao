@@ -1,0 +1,14 @@
+cc_library_shared {
+    name: "libmtktinyxml",
+    srcs: [
+        "tinyxml.cpp",
+        "tinyxmlparser.cpp",
+        "tinyxmlerror.cpp",
+        "tinystr.cpp",
+    ],
+    header_libs: [
+        "mtk_ril_tinyxml_headers",
+    ],
+    proprietary: true,
+    owner: "mtk",
+}

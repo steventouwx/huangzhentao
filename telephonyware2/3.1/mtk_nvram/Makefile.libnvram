@@ -1,0 +1,35 @@
+# SPDX-License-Identifier:MediaTekProprietary
+NAME = libnvram
+SRC := $(NAME)
+OBJ := $(NAME)
+
+INCLUDES=-Ilibnvram
+INCLUDES += -I./libfile_op
+INCLUDES += -I./cgen
+INCLUDES += -I./cgen/cfgfileinc
+INCLUDES += -I./cgen/cfgdefault
+INCLUDES += -I./cgen/inc
+INCLUDES += -I/usr/include/libubox
+
+LIBS=-L/usr/lib -lubox
+
+SOURCES_C := $(wildcard $(SRC)/*.c)
+OBJECTS_C := $(patsubst $(SRC)/%.c, $(OBJ)/%.o, $(SOURCES_C))
+
+SOURCES_CPP := $(wildcard $(SRC)/*.cpp)
+OBJECTS_CPP := $(patsubst $(SRC)/%.cpp, $(OBJ)/%.o, $(SOURCES_CPP))
+
+SOURCES := $(SOURCES_C) $(SOURCES_CPP)
+OBJECTS := $(OBJECTS_C) $(OBJECTS_CPP)
+
+$(NAME).so: $(OBJECTS)
+	$(CC) -shared -fPIC $(INCLUDES) -o $@ $^ $(LIBS)
+
+$(OBJ)/%.o: $(SRC)/%.c
+	${CC} $(CFLAGS) -fPIC -c $< -o $@ $(INCLUDES)
+
+$(OBJ)/%.o: $(SRC)/%.cpp
+	${CXX} $(CXXFLAGS) -fPIC -c $< -o $@ $(INCLUDES)
+
+clean:
+	rm -f $(NAME).so

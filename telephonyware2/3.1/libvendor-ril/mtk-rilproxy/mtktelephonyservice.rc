@@ -1,0 +1,16 @@
+#group radio cache inet misc audio log readproc wakelock sdcard_r sdcard_rw system
+on post-fs-data
+    # create ims db node
+    mkdir /data/vendor/telephony 0771 root root
+
+service mtktelephonyservice /vendor/bin/mtktelephonyservice
+    class main
+    user root
+    group audio camera inet net_bt net_bt_admin net_bw_acct drmrpc mediadrm media sdcard_r system
+    disabled
+
+on property:vendor.ril.mtk=1
+    start mtktelephonyservice
+on property:ro.vendor.mtk_mipc_support=1
+    start mtktelephonyservice
+

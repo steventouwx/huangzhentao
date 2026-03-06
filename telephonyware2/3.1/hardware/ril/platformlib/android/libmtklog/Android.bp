@@ -1,0 +1,22 @@
+cc_library_shared {
+    name: "libmtkrillog",
+    srcs: [
+        "mtk_log.c",
+    ],
+    header_libs: [
+        "libMtkLogHeaders",
+    ],
+    shared_libs: [
+        "liblog",
+    ],
+    static_libs: [
+        "libcutils",
+    ],
+    proprietary: true,
+    owner: "mtk",
+    cflags: [
+        "-Werror",
+        "-Wall",
+        "-Wextra",
+    ],
+}

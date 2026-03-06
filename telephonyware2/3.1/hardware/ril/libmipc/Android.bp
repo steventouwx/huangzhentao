@@ -1,0 +1,46 @@
+bootstrap_go_package {
+    name: "soong-mtklibmipc-mediatek",
+    pkgPath: "android/soong/mtklibmipc/mediatek",
+    deps: [
+        "soong-android",
+        "soong-cc",
+        "soong-android-mediatek",
+    ],
+    srcs: [
+        "mtklibmipc.go",
+    ],
+    pluginFor: ["soong_build"],
+}
+
+mtklibmipc {
+    name: "mtklibmipc",
+}
+
+cc_library_shared {
+    defaults: ["mtklibmipc"],
+    name: "libmipc",
+    srcs: [
+        "src/common/platform_mtk.c",
+        "src/msg/hashmap.c",
+        "src/msg/list.c",
+        "src/msg/msg.c",
+        "src/msg/msg_host.c",
+    ],
+    header_libs: [
+        "libMtkLogHeaders",
+        "libmipc_includes",
+        "libMtkPropHeaders",
+    ],
+    shared_libs: [
+        "libmtkrillog",
+        "libtrm",
+        "libmtkproperty",
+    ],
+    export_header_lib_headers: ["libmipc_includes"],
+    compile_multilib: "both",
+    proprietary: true,
+    owner: "mtk",
+    cflags: [
+        "-DTRM_SUPPORT",
+    ],
+}

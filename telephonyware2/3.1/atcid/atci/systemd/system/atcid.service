@@ -1,0 +1,8 @@
+[Unit]
+Description=ATCID
+DefaultDependencies=no
+
+[Service]
+ExecStart=/usr/bin/atcid
+StandardOutput=tty
+StandardError=tty

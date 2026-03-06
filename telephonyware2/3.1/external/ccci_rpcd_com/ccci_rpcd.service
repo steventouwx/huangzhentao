@@ -1,0 +1,13 @@
+[Unit]
+Description=ccci_rpcd service
+
+[Service]
+Type=simple
+StandardOutput=kmsg+console
+ExecStart=/usr/bin/ccci_rpcd 0
+Restart=always
+RestartSec=5
+TimeoutSec=5
+
+[Install]
+WantedBy=multi-user.target

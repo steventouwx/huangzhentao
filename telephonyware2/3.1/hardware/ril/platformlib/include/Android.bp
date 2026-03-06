@@ -1,0 +1,5 @@
+cc_library_headers {
+    name: "mtk_ril_include_headers",
+    proprietary: true,
+    export_include_dirs: [".", "mtkrilutils", "log", "property", "utils", "tinyxml", "config"],
+}

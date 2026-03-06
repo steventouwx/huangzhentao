@@ -1,0 +1,51 @@
+/*
+ * Copyright (C) 2023 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+ 
+package vendor.mediatek.hardware.tbox;
+
+@VintfStability
+parcelable MTK_CellIdentityNr {
+    /**
+     * 3-digit Mobile Country Code, in range[0, 999]; This value must be valid for registered or
+     *  camped cells; INT_MAX means invalid/unreported.
+     */
+    int mcc;
+    /**
+     * 2 or 3-digit Mobile Network Code, in range [0, 999], This value must be valid for
+     * registered or camped cells; INT_MAX means invalid/unreported.
+     */
+    int mnc;
+    /**
+     * NR Cell Identity in range [0, 68719476735] (36 bits) described in 3GPP TS 38.331, which
+     * unambiguously identifies a cell within a PLMN. This value must be valid for registered or
+     * camped cells; LONG_MAX (2^63-1) means invalid/unreported.
+     */
+    long nci;
+    /**
+     * Physical cell id in range [0, 1007] described in 3GPP TS 38.331. This value must be valid.
+     */
+    int pci;
+    /**
+     * 16-bit tracking area code, INT_MAX means invalid/unreported.
+     */
+    int tac;
+    /**
+     * NR Absolute Radio Frequency Channel Number, in range [0, 3279165].
+     * Reference: 3GPP TS 38.101-1 and 3GPP TS 38.101-2 section 5.4.2.1.
+     * This value must be valid.
+     */
+    int nrarfcn;
+}

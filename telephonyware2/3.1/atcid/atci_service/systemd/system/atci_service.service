@@ -1,0 +1,8 @@
+[Unit]
+Description=ATCI_SERVICE
+DefaultDependencies=no
+
+[Service]
+ExecStart=/usr/bin/atci_service
+StandardOutput=tty
+StandardError=tty

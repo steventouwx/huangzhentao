@@ -1,0 +1,177 @@
+// SPDX-License-Identifier: MediaTekProprietary
+/* Copyright Statement:
+ *
+ * This software/firmware and related documentation ("MediaTek Software") are
+ * protected under relevant copyright laws. The information contained herein
+ * is confidential and proprietary to MediaTek Inc. and/or its licensors.
+ * Without the prior written permission of MediaTek inc. and/or its licensors,
+ * any reproduction, modification, use or disclosure of MediaTek Software,
+ * and information contained herein, in whole or in part, shall be strictly prohibited.
+ */
+/* MediaTek Inc. (C) 2021. All rights reserved.
+ *
+ * BY OPENING THIS FILE, RECEIVER HEREBY UNEQUIVOCALLY ACKNOWLEDGES AND AGREES
+ * THAT THE SOFTWARE/FIRMWARE AND ITS DOCUMENTATIONS ("MEDIATEK SOFTWARE")
+ * RECEIVED FROM MEDIATEK AND/OR ITS REPRESENTATIVES ARE PROVIDED TO RECEIVER ON
+ * AN "AS-IS" BASIS ONLY. MEDIATEK EXPRESSLY DISCLAIMS ANY AND ALL WARRANTIES,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR NONINFRINGEMENT.
+ * NEITHER DOES MEDIATEK PROVIDE ANY WARRANTY WHATSOEVER WITH RESPECT TO THE
+ * SOFTWARE OF ANY THIRD PARTY WHICH MAY BE USED BY, INCORPORATED IN, OR
+ * SUPPLIED WITH THE MEDIATEK SOFTWARE, AND RECEIVER AGREES TO LOOK ONLY TO SUCH
+ * THIRD PARTY FOR ANY WARRANTY CLAIM RELATING THERETO. RECEIVER EXPRESSLY ACKNOWLEDGES
+ * THAT IT IS RECEIVER'S SOLE RESPONSIBILITY TO OBTAIN FROM ANY THIRD PARTY ALL PROPER LICENSES
+ * CONTAINED IN MEDIATEK SOFTWARE. MEDIATEK SHALL ALSO NOT BE RESPONSIBLE FOR ANY MEDIATEK
+ * SOFTWARE RELEASES MADE TO RECEIVER'S SPECIFICATION OR TO CONFORM TO A PARTICULAR
+ * STANDARD OR OPEN FORUM. RECEIVER'S SOLE AND EXCLUSIVE REMEDY AND MEDIATEK'S ENTIRE AND
+ * CUMULATIVE LIABILITY WITH RESPECT TO THE MEDIATEK SOFTWARE RELEASED HEREUNDER WILL BE,
+ * AT MEDIATEK'S OPTION, TO REVISE OR REPLACE THE MEDIATEK SOFTWARE AT ISSUE,
+ * OR REFUND ANY SOFTWARE LICENSE FEES OR SERVICE CHARGE PAID BY RECEIVER TO
+ * MEDIATEK FOR SUCH MEDIATEK SOFTWARE AT ISSUE.
+ *
+ * The following software/firmware and/or related documentation ("MediaTek Software")
+ * have been modified by MediaTek Inc. All revisions are subject to any receiver's
+ * applicable license agreements with MediaTek Inc.
+ */
+#include <cstdint>
+#include <mtk_log.h>
+#include "RpDataUtils.h"
+#include "mtkradioex_modem_response.h"
+
+#define LOG_TAG "MtkRadioExModemResponse"
+
+MtkRadioExModemResponse:: MtkRadioExModemResponse(int slot, RfxDispatchThread* dispatchThread) {
+    mSlot = slot;
+    mDispatchThread = dispatchThread;
+}
+
+ndk::ScopedAStatus MtkRadioExModemResponse::getEngineeringModeInfoResponse(const ::aidl::android::hardware::radio::RadioResponseInfo& info, const std::vector<std::string>& ) {
+    rspInfo = info;
+
+    return ndk::ScopedAStatus::ok();
+}
+
+ndk::ScopedAStatus MtkRadioExModemResponse::modifyModemTypeResponse(const ::aidl::android::hardware::radio::RadioResponseInfo& info, int32_t ) {
+    rspInfo = info;
+
+    return ndk::ScopedAStatus::ok();
+}
+
+ndk::ScopedAStatus MtkRadioExModemResponse::restartRILDResponse(const ::aidl::android::hardware::radio::RadioResponseInfo& info) {
+    rspInfo = info;
+
+    return ndk::ScopedAStatus::ok();
+}
+
+ndk::ScopedAStatus MtkRadioExModemResponse::runGbaAuthenticationResponse(const ::aidl::android::hardware::radio::RadioResponseInfo& info, const std::vector<std::string>& ) {
+    rspInfo = info;
+
+    return ndk::ScopedAStatus::ok();
+}
+
+ndk::ScopedAStatus MtkRadioExModemResponse::sendEmbmsAtCommandResponse(const ::aidl::android::hardware::radio::RadioResponseInfo& info, const std::string& ) {
+    rspInfo = info;
+
+    return ndk::ScopedAStatus::ok();
+}
+
+ndk::ScopedAStatus MtkRadioExModemResponse::sendRequestRawResponse(const ::aidl::android::hardware::radio::RadioResponseInfo& info, const std::vector<uint8_t>& in_data) {
+    RLOGD("sendRequestRawResponse(%d): response: info = %s", mSlot, info.toString().c_str());
+    int32_t len;
+    //status_t status;
+    len = in_data.size();
+    char* data = new char[len + 1];
+    for (std::size_t i = 0; i < len; ++i) {
+        data[i] = static_cast<char>(in_data[i]);
+    }
+    data[len] = '\0';
+    RLOGD("sendRequestRawResponse(%d): len = %d, response = %s", mSlot, len, data);
+    Parcel p;
+    p.writeInt32((int32_t)(info.type));
+    p.writeInt32(info.serial);
+    p.writeInt32((int32_t)(info.error));
+    p.writeInt32(len);
+    p.write(data, len);
+    p.setDataPosition(0);
+    mDispatchThread->enqueueResponseMessage(RADIO_TECH_GROUP_GSM, mSlot, info.serial, (int)info.error, &p);
+    delete [] data;
+    return ndk::ScopedAStatus().ok();
+}
+
+ndk::ScopedAStatus MtkRadioExModemResponse::sendRequestStringsResponse(const ::aidl::android::hardware::radio::RadioResponseInfo& info, const std::vector<std::string>& ) {
+    rspInfo = info;
+
+    return ndk::ScopedAStatus::ok();
+}
+
+ndk::ScopedAStatus MtkRadioExModemResponse::sendSarIndicatorResponse(const ::aidl::android::hardware::radio::RadioResponseInfo& info) {
+    rspInfo = info;
+
+    return ndk::ScopedAStatus::ok();
+}
+
+ndk::ScopedAStatus MtkRadioExModemResponse::setModemPowerResponse(const ::aidl::android::hardware::radio::RadioResponseInfo& info) {
+    RLOGD("setModemPowerResponse(%d): response: info = %s", mSlot, info.toString().c_str());
+    Parcel p;
+    p.writeInt32((int32_t)(info.type));
+    p.writeInt32(info.serial);
+    p.writeInt32((int32_t)(info.error));
+    p.setDataPosition(0);
+    mDispatchThread->enqueueResponseMessage(RADIO_TECH_GROUP_GSM, mSlot, info.serial, (int)info.error, &p);
+    return ndk::ScopedAStatus().ok();
+
+}
+
+ndk::ScopedAStatus MtkRadioExModemResponse::setTrmResponse(const ::aidl::android::hardware::radio::RadioResponseInfo& info) {
+    rspInfo = info;
+
+    return ndk::ScopedAStatus::ok();
+}
+
+ndk::ScopedAStatus MtkRadioExModemResponse::setTxPowerResponse(const ::aidl::android::hardware::radio::RadioResponseInfo& info) {
+    rspInfo = info;
+
+    return ndk::ScopedAStatus::ok();
+}
+
+ndk::ScopedAStatus MtkRadioExModemResponse::setTxPowerStatusResponse(const ::aidl::android::hardware::radio::RadioResponseInfo& info) {
+    rspInfo = info;
+
+    return ndk::ScopedAStatus::ok();
+}
+
+ndk::ScopedAStatus MtkRadioExModemResponse::setVendorSettingResponse(const ::aidl::android::hardware::radio::RadioResponseInfo& info) {
+    rspInfo = info;
+
+    return ndk::ScopedAStatus::ok();
+}
+
+ndk::ScopedAStatus MtkRadioExModemResponse::triggerModeSwitchByEccResponse(const ::aidl::android::hardware::radio::RadioResponseInfo& info) {
+    rspInfo = info;
+
+    return ndk::ScopedAStatus::ok();
+}
+
+ndk::ScopedAStatus MtkRadioExModemResponse::sendWifiAssociatedResponse(const ::aidl::android::hardware::radio::RadioResponseInfo& info) {
+    rspInfo = info;
+
+    return ndk::ScopedAStatus::ok();
+}
+
+ndk::ScopedAStatus MtkRadioExModemResponse::sendWifiEnabledResponse(const ::aidl::android::hardware::radio::RadioResponseInfo& info) {
+    rspInfo = info;
+
+    return ndk::ScopedAStatus::ok();
+}
+
+ndk::ScopedAStatus MtkRadioExModemResponse::sendWifiIpAddressResponse(const ::aidl::android::hardware::radio::RadioResponseInfo& info) {
+    rspInfo = info;
+
+    return ndk::ScopedAStatus::ok();
+}
+
+ndk::ScopedAStatus MtkRadioExModemResponse::registerCellQltyReportResponse(const ::aidl::android::hardware::radio::RadioResponseInfo& info) {
+    rspInfo = info;
+
+    return ndk::ScopedAStatus::ok();
+}

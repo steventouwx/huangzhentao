@@ -1,0 +1,17 @@
+[Unit]
+Description=mtktelephonyservice
+After=local-fs.target remote-fs.target
+Requires=local-fs.target
+
+[Service]
+Type=forking
+StandardOutput=kmsg+console
+ExecStart=/bin/sh /usr/share/init/init_mtktelephonyservice
+ExecStop=/usr/bin/killall -s KILL mtktelephonyservice
+#RemainAfterExit=yes
+Restart=always
+User=root
+Group=root
+
+[Install]
+#WantedBy=multi-user.target

@@ -1,0 +1,5 @@
+cc_library_headers {
+    name: "libMtkPropHeaders",
+    proprietary: true,
+    export_include_dirs: ["."],
+}

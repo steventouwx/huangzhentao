@@ -1,0 +1,36 @@
+/*
+ * Copyright (C) 2023 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+ 
+package vendor.mediatek.hardware.tbox;
+
+import vendor.mediatek.hardware.tbox.MTK_CDMA_SignalStrength;
+import vendor.mediatek.hardware.tbox.MTK_EVDO_SignalStrength;
+import vendor.mediatek.hardware.tbox.MTK_GW_SignalStrength;
+import vendor.mediatek.hardware.tbox.MTK_LTE_SignalStrength;
+import vendor.mediatek.hardware.tbox.MTK_NR_SignalStrength;
+import vendor.mediatek.hardware.tbox.MTK_TD_SCDMA_SignalStrength;
+import vendor.mediatek.hardware.tbox.MTK_WCDMA_SignalStrength;
+
+@VintfStability
+parcelable MTK_SignalStrength {
+    MTK_GW_SignalStrength GW_SignalStrength;
+    MTK_CDMA_SignalStrength CDMA_SignalStrength;
+    MTK_EVDO_SignalStrength EVDO_SignalStrength;
+    MTK_LTE_SignalStrength LTE_SignalStrength;
+    MTK_TD_SCDMA_SignalStrength TD_SCDMA_SignalStrength;
+    MTK_WCDMA_SignalStrength WCDMA_SignalStrength;
+    MTK_NR_SignalStrength NR_SignalStrength;
+}

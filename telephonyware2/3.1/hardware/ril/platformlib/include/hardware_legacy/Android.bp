@@ -1,0 +1,5 @@
+cc_library_headers {
+    name: "libmtkhardware_legacy_headers",
+    proprietary: true,
+    export_include_dirs: ["."],
+}

@@ -1,0 +1,18 @@
+[Unit]
+Description=muxreport service
+#After=mtkfusionrild.service
+
+[Service]
+Type=forking
+StandardOutput=kmsg+console
+ExecStart=/bin/sh /usr/share/init/init_muxreport
+ExecStop=/usr/bin/killall -s KILL muxreport
+#RemainAfterExit=yes
+Restart=always
+RestartSec=2
+TimeoutSec=2
+User=root
+Group=root
+
+[Install]
+#WantedBy=multi-user.target

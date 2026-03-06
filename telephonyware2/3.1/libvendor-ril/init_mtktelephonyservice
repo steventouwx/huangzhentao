@@ -1,0 +1,18 @@
+#!/bin/sh
+
+echo "=== Initial: mtktelephonyservice Start ===" > /dev/kmsg
+
+boot_mode=`hexdump -v /proc/device-tree/chosen/atag,boot | awk '{print $6}'`
+case $boot_mode in
+    0000|000b)
+        /usr/bin/mtktelephonyservice &
+        echo "=== Initial: mtktelephonyservice normal boot ===" > /dev/kmsg
+        ;;
+    0001)
+        echo "META Mode" > /dev/kmsg
+        ;;
+esac
+
+echo "=== Initial: mtktelephonyservice End ===" > /dev/kmsg
+
+

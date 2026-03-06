@@ -1,0 +1,35 @@
+This directory contains NvRAM test binary
+
+
+WHAT IT DOES?
+=============
+It provides to backup NvRAM data to bin region
+
+
+HOW IT WAS BUILT?
+==================
+
+It needs the following libs from AOSP:
+1.  libc.so
+2.  libcutils.so
+
+and the following libs from MediaTek:
+1. libnvram.so
+2. libfile_op
+
+
+All source/dependency modules of this module are already put in
+'vendor/mediatek/libs' folder.
+
+
+HOW TO USE IT?
+==============
+
+Files in this directory is used to
+generate a binary which's name is 'nvram_test'
+
+The binary  'nvram_test' is loaded when system boot up,
+it would do NvRAM data backup operation.
+
+
+All the source code of this library were written by MediaTek co..

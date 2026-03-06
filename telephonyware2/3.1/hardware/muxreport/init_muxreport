@@ -1,0 +1,19 @@
+#!/bin/sh
+
+echo "=== Initial: muxreport Start ===" > /dev/kmsg
+
+boot_mode=`hexdump -v /proc/device-tree/chosen/atag,boot | awk '{print $6}'`
+case $boot_mode in
+    0000|000b)
+        /usr/bin/muxreport &
+        echo "=== Initial: muxreport normal boot ===" > /dev/kmsg
+        ;;
+    0001)
+        echo "META Mode" > /dev/kmsg
+        ;;
+esac
+
+echo "=== Initial: muxreport End ===" > /dev/kmsg
+
+
+

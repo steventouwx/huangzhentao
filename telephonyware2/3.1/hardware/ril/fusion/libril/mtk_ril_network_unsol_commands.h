@@ -1,0 +1,54 @@
+/* Copyright Statement:
+ *
+ * This software/firmware and related documentation ("MediaTek Software") are
+ * protected under relevant copyright laws. The information contained herein
+ * is confidential and proprietary to MediaTek Inc. and/or its licensors.
+ * Without the prior written permission of MediaTek inc. and/or its licensors,
+ * any reproduction, modification, use or disclosure of MediaTek Software,
+ * and information contained herein, in whole or in part, shall be strictly prohibited.
+ *
+ * MediaTek Inc. (C) 2022. All rights reserved.
+ *
+ * BY OPENING THIS FILE, RECEIVER HEREBY UNEQUIVOCALLY ACKNOWLEDGES AND AGREES
+ * THAT THE SOFTWARE/FIRMWARE AND ITS DOCUMENTATIONS ("MEDIATEK SOFTWARE")
+ * RECEIVED FROM MEDIATEK AND/OR ITS REPRESENTATIVES ARE PROVIDED TO RECEIVER ON
+ * AN "AS-IS" BASIS ONLY. MEDIATEK EXPRESSLY DISCLAIMS ANY AND ALL WARRANTIES,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR NONINFRINGEMENT.
+ * NEITHER DOES MEDIATEK PROVIDE ANY WARRANTY WHATSOEVER WITH RESPECT TO THE
+ * SOFTWARE OF ANY THIRD PARTY WHICH MAY BE USED BY, INCORPORATED IN, OR
+ * SUPPLIED WITH THE MEDIATEK SOFTWARE, AND RECEIVER AGREES TO LOOK ONLY TO SUCH
+ * THIRD PARTY FOR ANY WARRANTY CLAIM RELATING THERETO. RECEIVER EXPRESSLY ACKNOWLEDGES
+ * THAT IT IS RECEIVER'S SOLE RESPONSIBILITY TO OBTAIN FROM ANY THIRD PARTY ALL PROPER LICENSES
+ * CONTAINED IN MEDIATEK SOFTWARE. MEDIATEK SHALL ALSO NOT BE RESPONSIBLE FOR ANY MEDIATEK
+ * SOFTWARE RELEASES MADE TO RECEIVER'S SPECIFICATION OR TO CONFORM TO A PARTICULAR
+ * STANDARD OR OPEN FORUM. RECEIVER'S SOLE AND EXCLUSIVE REMEDY AND MEDIATEK'S ENTIRE AND
+ * CUMULATIVE LIABILITY WITH RESPECT TO THE MEDIATEK SOFTWARE RELEASED HEREUNDER WILL BE,
+ * AT MEDIATEK'S OPTION, TO REVISE OR REPLACE THE MEDIATEK SOFTWARE AT ISSUE,
+ * OR REFUND ANY SOFTWARE LICENSE FEES OR SERVICE CHARGE PAID BY RECEIVER TO
+ * MEDIATEK FOR SUCH MEDIATEK SOFTWARE AT ISSUE.
+ *
+ * The following software/firmware and/or related documentation ("MediaTek Software")
+ * have been modified by MediaTek Inc. All revisions are subject to any receiver's
+ * applicable license agreements with MediaTek Inc.
+ */
+{RIL_UNSOL_SIGNAL_STRENGTH_WITH_WCDMA_ECIO, mtkRadioExNetwork::currentSignalStrengthWithWcdmaEcioInd, DONT_WAKE},
+{RIL_UNSOL_NETWORK_BAND_INFO_IND, mtkRadioExNetwork::networkBandInfoInd, WAKE_PARTIAL},
+{RIL_UNSOL_NETWORK_INFO, mtkRadioExNetwork::networkInfoInd, WAKE_PARTIAL},
+{RIL_UNSOL_NR_CA_BAND_IND, mtkRadioExNetwork::nrCaBandChangeInd, WAKE_PARTIAL},
+{RIL_UNSOL_NR_SYS_INFO, mtkRadioExNetwork::nrSysInfoInd, WAKE_PARTIAL},
+{RIL_UNSOL_5GUW_INFO_IND, mtkRadioExNetwork::on5GUWInfoInd, WAKE_PARTIAL},
+{RIL_UNSOL_MCCMNC_CHANGED, mtkRadioExNetwork::onMccMncChangedInd, WAKE_PARTIAL},
+{RIL_UNSOL_PSEUDO_CELL_INFO, mtkRadioExNetwork::onPseudoCellInfoInd, WAKE_PARTIAL},
+{RIL_UNSOL_RESPONSE_CS_NETWORK_STATE_CHANGED, mtkRadioExNetwork::responseCsNetworkStateChangeInd, WAKE_PARTIAL},
+{RIL_UNSOL_NW_CFG_INFO, mtkRadioExNetwork::currentNwCfgInfoInd, WAKE_PARTIAL},
+{RIL_UNSOL_RRC_STATE, mtkRadioExNetwork::currentRrcStateInd, WAKE_PARTIAL},
+{RIL_UNSOL_FEMTOCELL_INFO, mtkRadioExNetwork::responseFemtocellInfo, WAKE_PARTIAL},
+{RIL_UNSOL_LTE_NETWORK_INFO, mtkRadioExNetwork::responseLteNetworkInfo, WAKE_PARTIAL},
+{RIL_UNSOL_MODULATION_INFO, mtkRadioExNetwork::responseModulationInfoInd, WAKE_PARTIAL},
+{RIL_UNSOL_NETWORK_EVENT, mtkRadioExNetwork::responseNetworkEventInd, WAKE_PARTIAL},
+{RIL_UNSOL_RESPONSE_PS_NETWORK_STATE_CHANGED, mtkRadioExNetwork::responsePsNetworkStateChangeInd, WAKE_PARTIAL},
+{RIL_UNSOL_SMART_RAT_SWITCH_INFO, mtkRadioExSmartRatSwitch::smartRatSwitchInd, WAKE_PARTIAL},
+{RIL_UNSOL_SIB16_TIME_INFO_IND, mtkRadioExNetwork::sib16TimeInfoInd, WAKE_PARTIAL},
+{RIL_UNSOL_TOE_INFO_IND, mtkRadioExNetwork::toeInfoInd, WAKE_PARTIAL},
+{RIL_UNSOL_IWLAN_REGISTRATION_STATE, mtkRadioExNetwork::iwlanRegistrationStateInd, WAKE_PARTIAL},

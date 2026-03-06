@@ -1,0 +1,4 @@
+
+MIPC_REQ(RELAY, custom_mipc_relay_req)
+MIPC_REQ(XXX, custom_mipc_xxx_req)
+MIPC_REQ(AT, custom_mipc_at_req)

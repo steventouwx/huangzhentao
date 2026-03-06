@@ -1,0 +1,20 @@
+cc_library_shared {
+    name: "libmtkconfigutils",
+    srcs: [
+        "mtkconfigutils.c",
+    ],
+    header_libs: [
+        "libMtkPropHeaders",
+        "mtk_ril_config_headers",
+    ],
+    shared_libs: [
+        "libmtkconfig",
+    ],
+    cflags: [
+        "-Werror",
+        "-Wall",
+        "-Wextra",
+    ],
+    proprietary: true,
+    owner: "mtk",
+}

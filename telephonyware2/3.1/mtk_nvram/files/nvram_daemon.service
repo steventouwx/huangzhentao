@@ -1,0 +1,11 @@
+[Unit]
+Description=nvram_daemon service
+After=prop.service
+
+[Service]
+Type=simple
+StandardOutput=kmsg+console
+ExecStart=/usr/bin/nvram_daemon
+
+[Install]
+WantedBy=multi-user.target

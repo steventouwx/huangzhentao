@@ -1,0 +1,40 @@
+/*
+ * Copyright (C) 2021 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package vendor.mediatek.hardware.tbox;
+
+import vendor.mediatek.hardware.tbox.CellIdentityCdma;
+import vendor.mediatek.hardware.tbox.CellIdentityGsm;
+import vendor.mediatek.hardware.tbox.CellIdentityLte;
+import vendor.mediatek.hardware.tbox.CellIdentityNr;
+import vendor.mediatek.hardware.tbox.CellIdentityTdscdma;
+import vendor.mediatek.hardware.tbox.CellIdentityWcdma;
+
+/**
+ * A union representing the CellIdentity of a single cell.
+ * @hide
+ */
+@VintfStability
+@JavaDerive(toString=true)
+union CellIdentity {
+    boolean noinit;
+    CellIdentityGsm gsm;
+    CellIdentityWcdma wcdma;
+    CellIdentityTdscdma tdscdma;
+    CellIdentityCdma cdma;
+    CellIdentityLte lte;
+    CellIdentityNr nr;
+}

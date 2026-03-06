@@ -1,0 +1,26 @@
+#!/bin/sh
+
+echo "=== stop: mtkfusionrild start===" > /dev/kmsg
+
+boot_mode=`hexdump -v /proc/device-tree/chosen/atag,boot | awk '{print $6}'`
+case $boot_mode in
+    0000|000b)
+        property_value=$(getprop vendor.ril.mux.report.case)
+        echo "property_value: $property_value" > /dev/kmsg
+        if [ "$property_value" != "2" ]; then
+            echo "Property value is not equal to 2. Executing TRM" > /dev/kmsg
+            setprop vendor.ril.mux.report.case 2
+            sleep 1
+        fi
+        #/usr/bin/killall -s KILL mtkfusionrild
+        echo "=== stop: mtkfusionrild normal boot ===" > /dev/kmsg
+        ;;
+    0001)
+        echo "META Mode" > /dev/kmsg
+        ;;
+esac
+
+echo "=== stop: mtkfusionrild End ===" > /dev/kmsg
+
+
+

@@ -1,0 +1,21 @@
+[Unit]
+Description=mtkfusionrild
+After=prop.service timezone.service
+
+[Service]
+Type=forking
+StandardOutput=kmsg+console
+ExecStartPre=/bin/mkdir -p /dev/socket/
+ExecStart=/bin/sh /usr/share/init/init_mtkfusionrild
+ExecStop=/bin/sh /usr/share/init/stop_mtkfusionrild
+#ExecStop=/usr/bin/killall -s KILL mtkfusionrild
+#ExecStopPost=/bin/sh /usr/share/init/post_mtkfusionrild
+#RemainAfterExit=yes
+Restart=always
+#RestartSec=2
+#TimeoutSec=2
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target
